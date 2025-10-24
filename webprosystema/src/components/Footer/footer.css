@@ -1,0 +1,19 @@
+.main-footer {
+    background-color: #343a40 !important;
+    margin-top: 0;
+    /* Empurra o footer para baixo */
+    border-top: 3px solid #20c997;
+}
+
+.main-footer h5 {
+    color: #20c997;
+    font-weight: 600;
+}
+
+.main-footer p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.main-footer small {
+    color: rgba(255, 255, 255, 0.6);
+}

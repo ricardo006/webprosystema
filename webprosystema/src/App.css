@@ -1,0 +1,36 @@
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    margin-top: 56px;
+    margin-bottom: 60px;
+    padding: 20px 0;
+    min-height: calc(100vh - 116px);
+}
+
+/* Garante que o conteúdo não fique escondido */
+body {
+    padding-top: 56px;
+    /* padding-bottom: 60px; */
+}
+
+/* Transição suave entre páginas */
+.main-content>.container {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
