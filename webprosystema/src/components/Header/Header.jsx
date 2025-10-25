@@ -1,5 +1,6 @@
 import './header.css';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Header() {
     const location = useLocation();
@@ -21,11 +22,18 @@ function Header() {
 
     return (
         <header className="main-header">
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-health">
                 <div className="container">
-                    <Link className="navbar-brand fw-bold" to="/">
-                        Prosystema
-                    </Link>
+                    {/* Logo com menos padding */}
+                    <motion.div
+                        className="navbar-brand-container"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <Link className="navbar-brand fw-bold" to="/">
+                            Prosystema
+                        </Link>
+                    </motion.div>
 
                     <button
                         className="navbar-toggler"
@@ -39,15 +47,27 @@ function Header() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav mx-auto">
                             {menuItems.map((item) => (
-                                <li key={item.id} className="nav-item">
+                                <motion.li
+                                    key={item.id}
+                                    className="nav-item"
+                                    whileHover={{ y: -2 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                >
                                     <Link
                                         className={`nav-link ${isActive(item) ? 'active' : ''}`}
                                         to={item.path}
                                     >
                                         {item.name}
-                                        {isActive(item) && <span className="visually-hidden">(current)</span>}
+                                        {isActive(item) && (
+                                            <motion.span
+                                                className="active-indicator"
+                                                layoutId="activeIndicator"
+                                                initial={false}
+                                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                            />
+                                        )}
                                     </Link>
-                                </li>
+                                </motion.li>
                             ))}
                         </ul>
                     </div>

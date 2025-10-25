@@ -4,4 +4,144 @@
     left: 0;
     right: 0;
     z-index: 1000;
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%) !important;
+    /* box-shadow: 0 2px 20px rgba(25, 118, 210, 0.3); */
+}
+
+.bg-health {
+    background: transparent !important;
+}
+
+/* Container da logo com menos padding */
+.navbar-brand-container {
+    padding: 0.3rem 0;
+    /* Padding reduzido */
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white !important;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    /* Padding reduzido na logo */
+    margin: 0;
+}
+
+/* Itens do menu */
+.navbar-nav {
+    gap: 0.5rem;
+    /* Espaço entre os itens */
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9) !important;
+    padding: 0.7rem 1.2rem !important;
+    /* Padding ajustado */
+    margin: 0 0.3rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+    display: block;
+}
+
+/* Efeito hover com animação */
+.nav-link:hover {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Item ativo */
+.nav-link.active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.25);
+    font-weight: 600;
+}
+
+/* Indicador visual do item ativo */
+/* .active-indicator {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+} */
+
+.nav-link:hover::after {
+    width: 70%;
+}
+
+/* Remove o sublinhado do item ativo */
+.nav-link.active::after {
+    display: none;
+}
+
+/* Container principal do navbar */
+.navbar>.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Toggler button */
+.navbar-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 991.98px) {
+    .navbar-nav.mx-auto {
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 0.3rem 0;
+    }
+
+    .nav-link {
+        padding: 0.8rem 1rem !important;
+        margin: 0.1rem 0;
+    }
+
+    .active-indicator {
+        bottom: 5px;
+    }
+
+    .navbar-brand-container {
+        padding: 0.2rem 0;
+    }
+}
+
+/* Animação de entrada do header */
+.main-header {
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
