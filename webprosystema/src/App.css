@@ -1,6 +1,7 @@
 body {
     padding-top: 56px;
     font-family: 'Raleway', sans-serif;
+    background-color: #ffffff;
 }
 
 .app {
@@ -31,3 +32,5 @@ body {
         transform: translateY(0);
     }
 }
+
+

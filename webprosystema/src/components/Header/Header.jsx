@@ -1,16 +1,24 @@
 import './header.css';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import LogoProsystema from '../../assets/img/logo-prosystema.png';
+import {
+    Home,
+    Users,
+    Settings,
+    Briefcase,
+    Phone
+} from 'lucide-react';
 
 function Header() {
     const location = useLocation();
 
     const menuItems = [
-        { id: 1, name: 'Home', path: '/', exact: true },
-        { id: 2, name: 'Sobre', path: '/sobre' },
-        { id: 3, name: 'Serviços', path: '/servicos' },
-        { id: 4, name: 'Portfólio', path: '/portfolio' },
-        { id: 5, name: 'Contato', path: '/contato' }
+        { id: 1, name: 'Home', path: '/', exact: true, icon: <Home size={20} /> },
+        { id: 2, name: 'Sobre', path: '/sobre', icon: <Users size={20} /> },
+        { id: 3, name: 'Serviços', path: '/servicos', icon: <Settings size={20} /> },
+        { id: 4, name: 'Portfólio', path: '/portfolio', icon: <Briefcase size={20} /> },
+        { id: 5, name: 'Contato', path: '/contato', icon: <Phone size={20} /> }
     ];
 
     const isActive = (item) => {
@@ -22,19 +30,26 @@ function Header() {
 
     return (
         <header className="main-header">
-            <nav className="navbar navbar-expand-lg navbar-dark bg-health">
-                <div className="container">
-                    {/* Logo com menos padding */}
+            <nav className="navbar navbar-expand-lg navbar-light bg-white">
+                <div className="container-fluid p-0">
+                    {/* Logo à esquerda */}
                     <motion.div
                         className="navbar-brand-container"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
                         <Link className="navbar-brand fw-bold" to="/">
-                            Prosystema
+                            <div className="logo-wrapper">
+                                <img
+                                    src={LogoProsystema}
+                                    alt="Prosystema"
+                                    className="logo-image"
+                                />
+                            </div>
                         </Link>
                     </motion.div>
 
+                    {/* Toggler button */}
                     <button
                         className="navbar-toggler"
                         type="button"
@@ -44,6 +59,7 @@ function Header() {
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
+                    {/* Menu items centralizados */}
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav mx-auto">
                             {menuItems.map((item) => (
@@ -57,7 +73,14 @@ function Header() {
                                         className={`nav-link ${isActive(item) ? 'active' : ''}`}
                                         to={item.path}
                                     >
-                                        {item.name}
+                                        <div className="nav-link-content">
+                                            <span className="nav-icon">
+                                                {item.icon}
+                                            </span>
+                                            <span className="nav-text">
+                                                {item.name}
+                                            </span>
+                                        </div>
                                         {isActive(item) && (
                                             <motion.span
                                                 className="active-indicator"

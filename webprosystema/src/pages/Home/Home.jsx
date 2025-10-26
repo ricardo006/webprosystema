@@ -1,8 +1,30 @@
+import "../Home/home.css";
 import { motion } from 'framer-motion';
+import { useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import {
+    ChevronLeft,
+    ChevronRight,
+    CheckCircle,
+    ArrowRight,
+    Cpu,
+    Layers,
+    ShieldCheck,
+    Clock,
+    Smartphone,
+    Database,
+    Target,
+    BarChart3,
+    DollarSign,
+    Heart,
+    GitMerge,
+    TrendingUp
+} from 'lucide-react';
 import healtImageHome from "../../assets/img/retrato-de-um-medico-sincero.png";
 import twoMedicalAbout from "../../assets/img/profissionais-da-saude-revisam-os-resultados-dos-exames-de-ressonancia-magnetica-e-raios-x-neurologicos.jpg";
+import solutionsImg from "../../assets/img/aluno-afro-americano-de-faculdade-de-medicina-estuda-farmacologia-notas-em-uma-biblioteca.jpg";
 import medical from "../../assets/img/medico-sorridente-usando-projecao-3d-virtual.jpg";
-import "../Home/home.css";
 import GestaoIcon from "../../assets/icons/icon1.png";
 import MonitoramentoIcon from "../../assets/icons/icon2.png";
 import VisaoIcon from "../../assets/icons/icon3.png";
@@ -10,45 +32,92 @@ import AcompanhamentoIcon from "../../assets/icons/icon4.png";
 import AnalisesIcon from "../../assets/icons/icon5.png";
 import ApoioIcon from "../../assets/icons/icon6.png";
 
+import AtencaoPrimariaIcon from "../../assets/icons/atprimaria.png";
+import AtencaoEspecializadaIcon from "../../assets/icons/atespecializada.png";
+import AssistenciaFarmaceuticaIcon from "../../assets/icons/assfarmaceutica.png";
+import OCIIcon from "../../assets/icons/oci.png";
+
 function Home() {
     const services = [
+        // Do PDF 1 - Soluções Modulares
         {
             id: 1,
-            icon: GestaoIcon,
-            title: "Gestão Inteligente com IA e Dados em Tempo Real",
-            description: "Inteligência artificial para análise preditiva em saúde pública"
+            icon: AtencaoEspecializadaIcon,
+            title: "Atenção Especializada",
+            description: "Regulação ambulatorial e hospitalar com filas inteligentes"
         },
         {
             id: 2,
             icon: MonitoramentoIcon,
-            title: "Monitoramento Automatizado de Indicadores",
-            description: "Otimização de recursos e processos em tempo real"
+            title: "Vigilância em Saúde",
+            description: "Monitoramento epidemiológico em tempo real com alertas automáticos"
         },
         {
             id: 3,
             icon: VisaoIcon,
-            title: "Visão Integrada da Rede de Saúde",
-            description: "Proteção avançada para informações sensíveis de saúde"
+            title: "Central de Inteligência Estratégica",
+            description: "Indicadores em tempo real com painéis interativos de gestão"
         },
         {
             id: 4,
             icon: AcompanhamentoIcon,
-            title: "Acompanhamento de Metas & Desempenho",
-            description: "Sistemas automatizados para agilizar atendimentos"
+            title: "Central de Regulação",
+            description: "Gestão do acesso, disponibilidade de leitos e custos assistenciais"
         },
         {
             id: 5,
-            icon: AnalisesIcon,
-            title: "Análises Preditivas & Alertas Automáticos",
-            description: "Sistemas automatizados para agilizar atendimentos"
+            icon: AssistenciaFarmaceuticaIcon,
+            title: "Assistência Farmacêutica",
+            description: "Previsão de demanda com IA e controle de validade de medicamentos"
+        },
+        // Do PDF 2 - Soluções Adicionais  
+        {
+            id: 6,
+            icon: AtencaoPrimariaIcon,
+            title: "Atenção Primária",
+            description: "Fortalecimento da APS conforme Portaria GM/MS nº 3.493/2024"
         },
         {
-            id: 5,
-            icon: ApoioIcon,
-            title: "Apoio à Tomada de Decisão Estratégica",
-            description: "Sistemas automatizados para agilizar atendimentos"
+            id: 7,
+            icon: GestaoIcon, // Reutilizando ícone
+            title: "Atenção Especializada Ambulatorial",
+            description: "Gestão de demandas de consultas e exames de média complexidade"
+        },
+        {
+            id: 8,
+            icon: MonitoramentoIcon, // Reutilizando ícone
+            title: "Atenção Especializada Hospitalar",
+            description: "Monitoramento integrado dos processos assistenciais hospitalares"
+        },
+        {
+            id: 9,
+            icon: VisaoIcon, // Reutilizando ícone
+            title: "Planejamento e Programação",
+            description: "Prospecção quantitativa de consultas, exames e procedimentos"
+        },
+        {
+            id: 10,
+            icon: AcompanhamentoIcon, // Reutilizando ícone
+            title: "Central de Regulação, Avaliação e Controle",
+            description: "Gestão completa do acesso, produção e qualidade dos serviços"
         }
     ];
+
+    // Configuração do Embla Carousel
+    const [emblaRef, emblaApi] = useEmblaCarousel({
+        loop: true,
+        align: 'start',
+        slidesToScroll: 1,
+        containScroll: 'trimSnaps'
+    }, [Autoplay({ delay: 4000 })]);
+
+    const scrollPrev = useCallback(() => {
+        if (emblaApi) emblaApi.scrollPrev()
+    }, [emblaApi]);
+
+    const scrollNext = useCallback(() => {
+        if (emblaApi) emblaApi.scrollNext()
+    }, [emblaApi]);
 
     return (
         <>
@@ -158,26 +227,41 @@ function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
             >
-                <div>
+                <div className="container">
                     <div className="row justify-content-center">
+                        {/* Cabeçalho Quem Somos */}
                         <div className="col-12 text-center mb-5">
                             <h2 className="services-title">Quem Somos?</h2>
-                            <p className="services-subtitle"></p>
                         </div>
 
-                        <div className="col-lg-12">
-                            <div className="about-content" style={{ backgroundColor: '#f8f9fa', borderRadius: '60px' }}>
-                                <motion.div
-                                    className="about-intro"
-                                    initial={{ opacity: 0, x: -30 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.6, delay: 0.2 }}
-                                >
-                                    <p className="lead pt-3">
-                                        A <strong>PROSYSTEMA</strong> é uma plataforma tecnológica completa que une:
+                        {/* Texto de Introdução */}
+                        <div className="col-12 mb-5">
+                            <div className="about-intro-container">
+                                <div className="about-text-wrapper">
+                                    <p className="about-main-text">
+                                        A <strong>PROSYSTEMA</strong> é uma <strong>plataforma tecnológica completa</strong> que atua como
+                                        <strong> hub central</strong>, integrando e consolidando dados de diversas fontes para transformar
+                                        informações em <strong>decisões estratégicas que fortalecem o SUS</strong>.
                                     </p>
-                                </motion.div>
 
+                                    <div className="about-main-text">
+                                        <p>
+                                            Nossa plataforma atua como um <strong>hub central</strong>, integrando e consolidando dados de
+                                            diversas fontes (incluindo RNDS, TABWIN/SIA-SIH, sistemas legados e bases públicas).
+                                        </p>
+                                        <p>
+                                            Os dados são transformados em <strong>informações estratégicas e acessíveis em tempo real</strong>&nbsp;
+                                            via painéis de Business Intelligence (BI) e relatórios analíticos, fornecendo o subsídio
+                                            necessário para a <strong>tomada de decisão em todos os níveis de assistência</strong>.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Conteúdo Principal com Tecnologia e Foco */}
+                        <div className="col-12">
+                            <div className="about-content-main">
                                 <div className="row">
                                     {/* Primeira Linha - Nossa Tecnologia */}
                                     <div className="col-12 mb-5">
@@ -188,7 +272,7 @@ function Home() {
                                             transition={{ duration: 0.6, delay: 0.4 }}
                                         >
                                             <div className="row align-items-center">
-                                                {/* SVG com Imagem - Coluna 3 */}
+                                                {/* SVG com Imagem - Coluna 5 */}
                                                 <div className="col-md-5">
                                                     <motion.div
                                                         className="svg-image-container left"
@@ -203,13 +287,10 @@ function Home() {
                                                                 className="custom-svg"
                                                                 preserveAspectRatio="xMidYMid meet"
                                                             >
-                                                                {/* Forma de fundo */}
                                                                 <path
                                                                     d="M0 0h230c138 0 250 112 250 250v230H250C112 480 0 368 0 230V0Z"
-                                                                    fill="#808"
+                                                                    fill="#1976d2"
                                                                 />
-
-                                                                {/* Imagem dentro da forma */}
                                                                 <foreignObject x="0" y="0" width="480" height="480">
                                                                     <div
                                                                         xmlns="http://www.w3.org/1999/xhtml"
@@ -266,10 +347,10 @@ function Home() {
                                         </motion.div>
                                     </div>
 
-                                    {/* Segunda Linha - Com Foco em: */}
+                                    {/* Segunda Linha - Nosso Foco */}
                                     <div className="col-12">
                                         <motion.div
-                                            className="focus-row mt-4"
+                                            className="focus-row"
                                             initial={{ opacity: 0, y: 30 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.6, delay: 0.6 }}
@@ -313,7 +394,7 @@ function Home() {
                                                     </div>
                                                 </div>
 
-                                                {/* SVG COM IMAGEM - Coluna 5 (MESMO SVG DA PRIMEIRA LINHA) */}
+                                                {/* SVG COM IMAGEM - Coluna 5 */}
                                                 <div className="col-md-5">
                                                     <motion.div
                                                         className="svg-image-container right"
@@ -328,13 +409,10 @@ function Home() {
                                                                 className="custom-svg"
                                                                 preserveAspectRatio="xMidYMid meet"
                                                             >
-                                                                {/* Forma de fundo */}
                                                                 <path
                                                                     d="M0 0h230c138 0 250 112 250 250v230H250C112 480 0 368 0 230V0Z"
-                                                                    fill="#808"
+                                                                    fill="#2ecc71"
                                                                 />
-
-                                                                {/* Imagem dentro da forma */}
                                                                 <foreignObject x="0" y="0" width="480" height="480">
                                                                     <div
                                                                         xmlns="http://www.w3.org/1999/xhtml"
@@ -372,41 +450,186 @@ function Home() {
 
             {/* Seção Nossos Serviços - APÓS o gradiente */}
             <motion.section
-                className="services-section"
+                className="solutions-carousel-section"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
             >
-                <div className="container">
+                <div className="pt-2 m-3">
                     <div className="row justify-content-center">
-                        <div className="col-12 text-center mb-5">
-                            <h2 className="services-title">Nossas Soluções</h2>
-                            <p className="services-subtitle">Veja como nossa soluções ajudam a gestão</p>
+                        <div className="col-12 text-center">
+                            <h2 className="solutions-title">Nossas Soluções</h2>
+                            <p className="solutions-subtitle">Conheça nossa plataforma completa para gestão em saúde pública</p>
                         </div>
 
+                        {/* Botão Saiba Mais alinhado à direita */}
+                        <motion.div
+                            className="text-end mb-2"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 1.2 }}
+                        >
+                            <button className="btn btn-primary-health btn-lg me-3">
+                                Saiba Mais
+                                <ArrowRight size={20} className="ms-2" />
+                            </button>
+                        </motion.div>
+
                         <div className="col-12">
-                            <div className="services-cards">
-                                {services.map((service, index) => (
-                                    <motion.div
-                                        key={service.id}
-                                        className="service-card"
-                                        initial={{ opacity: 0, y: 30 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
-                                        whileHover={{ y: -10, scale: 1.02 }}
-                                    >
-                                        <div className="service-icon">
-                                            <img
-                                                src={service.icon}
-                                                alt={service.title}
-                                                className="service-icon-image"
-                                            />
-                                        </div>
-                                        <h4 className="service-card-title">{service.title}</h4>
-                                        <p className="service-card-description">{service.description}</p>
-                                        <div className="service-card-hover"></div>
-                                    </motion.div>
-                                ))}
+                            {/* Container do Carousel */}
+                            <div className="embla">
+                                <div className="embla__viewport" ref={emblaRef}>
+                                    <div className="embla__container">
+                                        {services.map((service, index) => (
+                                            <div className="embla__slide" key={service.id}>
+                                                <motion.div
+                                                    className="solution-card"
+                                                    initial={{ opacity: 0, scale: 0.9 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
+                                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                                    whileHover={{ y: -5, scale: 1.02 }}
+                                                >
+                                                    <div className="solution-icon">
+                                                        <img
+                                                            src={service.icon}
+                                                            alt={service.title}
+                                                            className="solution-icon-image"
+                                                        />
+                                                    </div>
+                                                    <h4 className="solution-card-title">{service.title}</h4>
+                                                    <p className="solution-card-description">{service.description}</p>
+                                                    <div className="solution-card-hover"></div>
+                                                </motion.div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Botões de navegação com ícones Lucide */}
+                                <div className="embla__controls">
+                                    <button className="embla__prev" onClick={scrollPrev}>
+                                        <ChevronLeft size={24} />
+                                    </button>
+                                    <button className="embla__next" onClick={scrollNext}>
+                                        <ChevronRight size={24} />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </motion.section>
+
+            {/* Seção Tecnologia que Transforma a Gestão em Resultados */}
+            <motion.section
+                className="technology-section"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+            >
+                <div className="container-fluid p-0">
+                    <div className="technology-header">
+                        <h2 className="technology-title">
+                            Tecnologia que Transforma a Gestão em Resultados
+                        </h2>
+                    </div>
+
+                    <div className="row align-items-stretch g-0"> {/* Removido gap com g-0 */}
+                        {/* Coluna da imagem */}
+                        <div className="col-lg-4">
+                            <motion.div
+                                className="technology-image-container"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.8, delay: 1.2 }}
+                            >
+                                <img
+                                    src={solutionsImg}
+                                    alt="Tecnologia em Saúde Pública"
+                                    className="technology-image"
+                                />
+                                <div className="image-overlay">
+                                    <h4>Soluções Inovadoras</h4>
+                                    <p>Para a gestão pública em saúde</p>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* Coluna dos cards */}
+                        <div className="col-lg-8">
+                            <div className="technology-content h-100">
+                                <div className="features-grid-cards h-100">
+                                    {[
+                                        {
+                                            text: "Diferenciais Tecnológicos",
+                                            icon: <Cpu size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Arquitetura Modular e Escalável",
+                                            icon: <Layers size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Segurança Total Conforme LGPD",
+                                            icon: <ShieldCheck size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Disponibilidade 24/7",
+                                            icon: <Clock size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Interface Moderna e Intuitiva",
+                                            icon: <Smartphone size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Base de Dados Integrada aos Sistemas Nacionais",
+                                            icon: <Database size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Resultados para o SUS",
+                                            icon: <Target size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Gestão Pública Orientada por Dados",
+                                            icon: <BarChart3 size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Otimização de Recursos Financeiros",
+                                            icon: <DollarSign size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Melhoria da Experiência do Paciente",
+                                            icon: <Heart size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Integração Real entre os Níveis de Atenção",
+                                            icon: <GitMerge size={34} className="feature-icon" />
+                                        },
+                                        {
+                                            text: "Aumento da Transparência e da Eficiência",
+                                            icon: <TrendingUp size={34} className="feature-icon" />
+                                        }
+                                    ].map((item, index) => (
+                                        <motion.div
+                                            key={index}
+                                            className="feature-card"
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5, delay: index * 0.1 + 1 }}
+                                            whileHover={{ y: -5, scale: 1.02 }}
+                                        >
+                                            <div className="feature-card-content">
+                                                <div className="feature-icon-container">
+                                                    {item.icon}
+                                                </div>
+                                                <div className="feature-text-container">
+                                                    <span className="feature-text" style={{ fontSize: '18px', color: '#263238' }}>
+                                                        {item.text}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
