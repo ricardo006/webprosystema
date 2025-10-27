@@ -1,0 +1,377 @@
+/* Estrutura principal da página About */
+.about-page {
+    width: 100%;
+    background: white;
+}
+
+.about-section {
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Primeira seção com gradiente azul e bordas arredondadas apenas no topo */
+.about-section-primary {
+    background: linear-gradient(185deg,
+            #daeaf5 0%,
+            #bbdefb 25%,
+            #90caf9 50%,
+            #64b5f6 75%,
+            #42a5f5 100%);
+    border-radius: 90px;
+    margin: 40px 20px 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Segunda seção com fundo branco que se estende até o final */
+.about-section-metrics {
+    background: #e3f2fd;
+    margin: -100px 20px 40px 20px;
+    border-radius: 0 0 60px 60px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Círculos flutuantes animados - APENAS NA SEÇÃO PRIMÁRIA */
+.about-section-primary .about-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    animation: aboutBubbleFloat 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.about-bubble-1 {
+    width: 100px;
+    height: 100px;
+    top: 15%;
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.about-bubble-2 {
+    width: 70px;
+    height: 70px;
+    top: 65%;
+    left: 90%;
+    animation-delay: 1.5s;
+}
+
+.about-bubble-3 {
+    width: 130px;
+    height: 130px;
+    top: 35%;
+    left: 85%;
+    animation-delay: 2s;
+}
+
+.about-bubble-4 {
+    width: 60px;
+    height: 60px;
+    top: 55%;
+    left: 12%;
+    animation-delay: 4.5s;
+}
+
+.about-bubble-5 {
+    width: 90px;
+    height: 90px;
+    top: 25%;
+    left: 75%;
+    animation-delay: 6s;
+}
+
+/* Animação específica para o About */
+@keyframes aboutBubbleFloat {
+
+    0%,
+    100% {
+        transform: translateY(80px) scale(0.8);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-40px) scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Conteúdo principal */
+.about-content {
+    position: relative;
+    z-index: 2;
+}
+
+.about-header {
+    margin-bottom: 3rem;
+}
+
+.about-main-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #263238;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.about-subtitle {
+    font-size: 1.2rem;
+    color: #546e7a;
+    line-height: 1.4;
+}
+
+.company-name {
+    color: #1976d2;
+    font-weight: 700;
+}
+
+/* Cards de Missão, Visão e Valores */
+.about-features-row {
+    margin-bottom: 0rem;
+}
+
+.about-feature-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(204, 231, 243, 0.8);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(25, 118, 210, 0.15);
+}
+
+.about-feature-icon {
+    color: #1976d2;
+    margin-bottom: 1rem;
+}
+
+.about-feature-title {
+    color: #1976d2;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.about-feature-text {
+    color: #546e7a;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* ===== SEÇÃO DE MÉTRICAS ===== */
+.metrics-container {
+    padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.metrics-main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #263238;
+    margin-bottom: 3rem;
+}
+
+.metrics-title-highlight {
+    color: #1976d2;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(25, 118, 210, 0.1);
+    border: 1px solid rgba(25, 118, 210, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    opacity: 0.8;
+}
+
+.metric-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(25, 118, 210, 0.15);
+}
+
+.metric-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1976d2;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+}
+
+.metric-line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #1976d2, #42a5f5);
+    margin: 0 auto 1.5rem auto;
+    border-radius: 2px;
+}
+
+.metric-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #263238;
+    line-height: 1.4;
+}
+
+.metrics-footer {
+    padding-top: 2rem;
+}
+
+.metrics-description {
+    font-size: 1.1rem;
+    color: #546e7a;
+    max-width: 500px;
+    margin: 0 auto;
+    font-style: italic;
+}
+
+/* Animações para os números */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.metric-number {
+    animation: countUp 0.6s ease-out;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .about-section-primary {
+        border-radius: 60px 60px 0 0;
+        margin: 20px 15px 0 15px;
+    }
+
+    .about-section-metrics {
+        margin: 0 15px 20px 15px;
+        border-radius: 0 0 60px 60px;
+    }
+
+    .about-content {
+        padding: 1rem;
+    }
+
+    .about-main-title {
+        font-size: 2.8rem;
+    }
+
+    .metrics-main-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 3rem 0;
+    }
+
+    .about-section-primary {
+        border-radius: 40px 40px 0 0;
+        margin: 15px 10px 0 10px;
+    }
+
+    .about-section-metrics {
+        margin: 0 10px 15px 10px;
+        border-radius: 0 0 40px 40px;
+    }
+
+    .about-main-title {
+        font-size: 2.2rem;
+    }
+
+    .metrics-main-title {
+        font-size: 2rem;
+    }
+
+    .about-bubble {
+        display: none;
+    }
+
+    .about-feature-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .metric-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-section-primary {
+        border-radius: 30px 30px 0 0;
+        margin: 10px 5px 0 5px;
+    }
+
+    .about-section-metrics {
+        margin: 0 5px 10px 5px;
+        border-radius: 0 0 30px 30px;
+    }
+
+    .about-main-title {
+        font-size: 1.8rem;
+    }
+
+    .metrics-main-title {
+        font-size: 1.8rem;
+    }
+
+    .about-subtitle {
+        font-size: 1rem;
+    }
+
+    .metric-number {
+        font-size: 2rem;
+    }
+
+    .metric-label {
+        font-size: 1rem;
+    }
+}

@@ -1,19 +1,233 @@
+/* Main Footer */
 .main-footer {
-    background-color: #343a40 !important;
+    position: relative;
     margin-top: 0;
-    /* Empurra o footer para baixo */
-    border-top: 3px solid #20c997;
 }
 
-.main-footer h5 {
-    color: #20c997;
+/* Footer Wave Top */
+.footer-wave-top {
+    width: 100%;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.footer-wave {
+    display: block;
+    width: 100%;
+    height: 80px;
+}
+
+/* Footer Content */
+.footer-content {
+    background: linear-gradient(135deg, #a2d9ff 0%, #bbdefb 100%) !important;
+    margin-top: -1px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Brand Section */
+.footer-brand {
+    text-align: left;
+}
+
+.footer-logo {
+    max-width: 250px;
+    height: auto;
+    filter: brightness(0) saturate(100%) invert(24%) sepia(89%) saturate(2593%) hue-rotate(198deg) brightness(93%) contrast(101%);
+}
+
+.brand-tagline {
+    color: #1565c0;
     font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    text-align: justify;
 }
 
-.main-footer p {
-    color: rgba(255, 255, 255, 0.8);
+.brand-description {
+    color: #424242;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+    text-align: justify;
 }
 
-.main-footer small {
-    color: rgba(255, 255, 255, 0.6);
+/* Contact Section */
+.footer-contact {
+    text-align: left;
+}
+
+.contact-title {
+    color: #1565c0;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.contact-info {
+    color: #424242;
+}
+
+.contact-item {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    color: #424242;
+    gap: 0.75rem;
+}
+
+.contact-icon {
+    color: #1976d2;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.contact-item.address {
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-item.address .contact-icon {
+    margin-top: 0.2rem;
+}
+
+/* Company Section */
+.footer-company {
+    text-align: left;
+}
+
+.company-title {
+    color: #1565c0;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+.company-info {
+    color: #263238;
+    font-size: 1rem;
+}
+
+.company-item {
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    color: #424242;
+    text-align: justify;
+}
+
+.company-item strong {
+    color: #1565c0;
+}
+
+.company-links {
+    margin-bottom: 1.5rem;
+}
+
+.company-link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.company-link-icon {
+    color: #1976d2;
+    flex-shrink: 0;
+}
+
+.company-link {
+    color: #1976d2;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.company-link:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+    transform: translateX(2px);
+}
+
+/* Copyright Section */
+.copyright {
+    color: #424242;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-brand {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .footer-contact,
+    .footer-company {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .contact-item {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .company-link-item {
+        justify-content: center;
+    }
+
+    .brand-tagline,
+    .brand-description,
+    .company-item {
+        text-align: center;
+    }
+
+    .footer-logo {
+        max-width: 200px;
+    }
+
+    .footer-wave {
+        height: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-content {
+        padding: 2rem 0 !important;
+    }
+
+    .footer-logo {
+        max-width: 180px;
+    }
+
+    .contact-item,
+    .company-info {
+        font-size: 0.9rem;
+    }
+
+    .contact-title,
+    .company-title {
+        font-size: 1.2rem;
+    }
+
+    .footer-wave {
+        height: 40px;
+    }
+}
+
+/* Animation for hover effects */
+.contact-item {
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    color: #1565c0;
+    transform: translateX(5px);
 }

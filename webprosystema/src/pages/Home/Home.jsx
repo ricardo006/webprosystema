@@ -23,6 +23,8 @@ import {
 } from 'lucide-react';
 import healtImageHome from "../../assets/img/retrato-de-um-medico-sincero.png";
 import twoMedicalAbout from "../../assets/img/profissionais-da-saude-revisam-os-resultados-dos-exames-de-ressonancia-magnetica-e-raios-x-neurologicos.jpg";
+import techRow from "../../assets/img/bg-row.png";
+import focoRow from "../../assets/img/bg-foco.png";
 import solutionsImg from "../../assets/img/aluno-afro-americano-de-faculdade-de-medicina-estuda-farmacologia-notas-em-uma-biblioteca.jpg";
 import medical from "../../assets/img/medico-sorridente-usando-projecao-3d-virtual.jpg";
 import GestaoIcon from "../../assets/icons/icon1.png";
@@ -79,25 +81,25 @@ function Home() {
         },
         {
             id: 7,
-            icon: GestaoIcon, // Reutilizando ícone
+            icon: GestaoIcon,
             title: "Atenção Especializada Ambulatorial",
             description: "Gestão de demandas de consultas e exames de média complexidade"
         },
         {
             id: 8,
-            icon: MonitoramentoIcon, // Reutilizando ícone
+            icon: MonitoramentoIcon,
             title: "Atenção Especializada Hospitalar",
             description: "Monitoramento integrado dos processos assistenciais hospitalares"
         },
         {
             id: 9,
-            icon: VisaoIcon, // Reutilizando ícone
+            icon: VisaoIcon, 
             title: "Planejamento e Programação",
             description: "Prospecção quantitativa de consultas, exames e procedimentos"
         },
         {
             id: 10,
-            icon: AcompanhamentoIcon, // Reutilizando ícone
+            icon: AcompanhamentoIcon,
             title: "Central de Regulação, Avaliação e Controle",
             description: "Gestão completa do acesso, produção e qualidade dos serviços"
         }
@@ -131,7 +133,7 @@ function Home() {
                 <div className="floating-circle circle-5"></div>
 
                 <div className="container-fluid">
-                    <div className="row align-items-center min-vh-100">
+                    <div className="row align-items-center">
                         {/* Texto à esquerda */}
                         <div className="col-lg-6">
                             <motion.div
@@ -264,12 +266,18 @@ function Home() {
                             <div className="about-content-main">
                                 <div className="row">
                                     {/* Primeira Linha - Nossa Tecnologia */}
-                                    <div className="col-12 mb-5">
+                                    <div className="col-12 mb-3">
                                         <motion.div
                                             className="tech-row"
                                             initial={{ opacity: 0, y: 30 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.6, delay: 0.4 }}
+                                            style={{
+                                                backgroundImage: `url(${techRow})`,
+                                                backgroundSize: 'cover',
+                                                backgroundPosition: 'center',
+                                                backgroundRepeat: 'no-repeat'
+                                            }}
                                         >
                                             <div className="row align-items-center">
                                                 {/* SVG com Imagem - Coluna 5 */}
@@ -354,12 +362,18 @@ function Home() {
                                             initial={{ opacity: 0, y: 30 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.6, delay: 0.6 }}
+                                            style={{
+                                                backgroundImage: `url(${focoRow})`,
+                                                backgroundSize: 'cover',
+                                                backgroundPosition: 'center',
+                                                backgroundRepeat: 'no-repeat'
+                                            }}
                                         >
                                             <div className="row align-items-center">
                                                 <div className="col-md-7">
                                                     <div className="focus-content">
                                                         <div className="column-header text-left">
-                                                            <h3 className="column-title">Nosso Foco</h3>
+                                                            <h3 className="column-title" style={{ color: '#fff' }}>Nosso Foco</h3>
                                                         </div>
                                                         <div className="focus-items">
                                                             <div className="focus-item">
