@@ -1,9 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import "../Home/home.css";
 import { motion } from 'framer-motion';
 import { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import {
+    Building,
+    Calendar,
+    FileText,
+    Users,
+    MapPin,
     ChevronLeft,
     ChevronRight,
     CheckCircle,
@@ -40,6 +46,13 @@ import AssistenciaFarmaceuticaIcon from "../../assets/icons/assfarmaceutica.png"
 import OCIIcon from "../../assets/icons/oci.png";
 
 function Home() {
+    const navigate = useNavigate();
+
+    const goToServicos = () => {
+        navigate('/servicos');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     const services = [
         // Do PDF 1 - Soluções Modulares
         {
@@ -135,7 +148,7 @@ function Home() {
                 <div className="container-fluid">
                     <div className="row align-items-center">
                         {/* Texto à esquerda */}
-                        <div className="col-lg-6">
+                        <div className="col-lg-7">
                             <motion.div
                                 initial={{ opacity: 0, x: -50 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -169,19 +182,63 @@ function Home() {
                                     transition={{ delay: 0.6, duration: 0.8 }}
                                 >
                                     <button className="btn btn-primary-health btn-lg me-3">
-                                        <i className="bi bi-calendar-check me-2"></i>
-                                        Agendar Consulta
-                                    </button>
-                                    <button className="btn btn-outline-health btn-lg">
-                                        <i className="bi bi-info-circle me-2"></i>
-                                        Saiba Mais
+                                        Solicite uma Demonstração
+                                        <ArrowRight className="ms-2" size={20} />
                                     </button>
                                 </motion.div>
+                            </motion.div>
+
+                            {/* COMPONENTE DE DESTAQUES CORRIGIDO */}
+                            <motion.div
+                                className="company-highlights-compact"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.8, duration: 0.6 }}
+                            >
+                                <div className="highlights-container-compact">
+                                    <div className="highlights-grid-compact">
+                                        {/* Título como primeiro card - mesma linha dos outros cards */}
+                                        <div className="">
+                                            <h3 className="main-title-compact">Gestão Pública mais Inteligente começa aqui.</h3>
+                                            <div className="title-decoration-compact"></div>
+                                        </div>
+
+                                        <div className="highlight-card-compact">
+                                            <div className="highlight-icon-compact">
+                                                <Calendar size={24} className="icon-compact" />
+                                            </div>
+                                            <div className="highlight-content-compact">
+                                                <div className="highlight-number-compact">+12 anos</div>
+                                                <div className="highlight-label-compact">de inovação e solidez</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="highlight-card-compact">
+                                            <div className="highlight-icon-compact">
+                                                <TrendingUp size={24} className="icon-compact" />
+                                            </div>
+                                            <div className="highlight-content-compact">
+                                                <div className="highlight-number-compact">Transformação</div>
+                                                <div className="highlight-label-compact">digital do setor público</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="highlight-card-compact">
+                                            <div className="highlight-icon-compact">
+                                                <Target size={24} className="icon-compact" />
+                                            </div>
+                                            <div className="highlight-content-compact">
+                                                <div className="highlight-number-compact">Evolução</div>
+                                                <div className="highlight-label-compact">real e sustentável</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </motion.div>
                         </div>
 
                         {/* Imagem com novo SVG atrás - à direita */}
-                        <div className="col-lg-6">
+                        <div className="col-lg-5">
                             <motion.div
                                 initial={{ opacity: 0, x: 50 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -192,8 +249,8 @@ function Home() {
                                 <div className="svg-background">
                                     <svg
                                         viewBox="0 0 900 600"
-                                        width="1400"
-                                        height="1400"
+                                        width="1200"
+                                        height="1200"
                                         className="abstract-svg"
                                     >
                                         <g transform="translate(416.7151027264783 279.50028151641493)">
@@ -483,7 +540,7 @@ function Home() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 1.2 }}
                         >
-                            <button className="btn btn-primary-health btn-lg me-3">
+                            <button className="btn btn-primary-health btn-lg me-3" onClick={goToServicos}>
                                 Saiba Mais
                                 <ArrowRight size={20} className="ms-2" />
                             </button>
