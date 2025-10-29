@@ -5,10 +5,13 @@ import { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import {
+    Cloud,
     Building,
     Calendar,
+    Globe,
     FileText,
     Users,
+    Brain,
     MapPin,
     ChevronLeft,
     ChevronRight,
@@ -44,6 +47,8 @@ import AtencaoPrimariaIcon from "../../assets/icons/atprimaria.png";
 import AtencaoEspecializadaIcon from "../../assets/icons/atespecializada.png";
 import AssistenciaFarmaceuticaIcon from "../../assets/icons/assfarmaceutica.png";
 import OCIIcon from "../../assets/icons/oci.png";
+import TechnologyScroll from '../../components/Scroll/TechnologyScroll';
+import AboutSection from '../../components/Sections/AboutSection/AboutSection';
 
 function Home() {
     const navigate = useNavigate();
@@ -106,7 +111,7 @@ function Home() {
         },
         {
             id: 9,
-            icon: VisaoIcon, 
+            icon: VisaoIcon,
             title: "Planejamento e Programação",
             description: "Prospecção quantitativa de consultas, exames e procedimentos"
         },
@@ -162,7 +167,7 @@ function Home() {
                                     transition={{ delay: 0.2, duration: 0.8 }}
                                     style={{ color: '#263238' }}
                                 >
-                                    Inovação & Inteligência Artificial
+                                    Inovação & Inteligência Artificial<br></br>
                                     <span className="text-primary-health"> à Serviço da Gestão em Saúde</span>
                                 </motion.h1>
 
@@ -188,7 +193,6 @@ function Home() {
                                 </motion.div>
                             </motion.div>
 
-                            {/* COMPONENTE DE DESTAQUES CORRIGIDO */}
                             <motion.div
                                 className="company-highlights-compact"
                                 initial={{ opacity: 0, y: 20 }}
@@ -197,7 +201,6 @@ function Home() {
                             >
                                 <div className="highlights-container-compact">
                                     <div className="highlights-grid-compact">
-                                        {/* Título como primeiro card - mesma linha dos outros cards */}
                                         <div className="">
                                             <h3 className="main-title-compact">Gestão Pública mais Inteligente começa aqui.</h3>
                                             <div className="title-decoration-compact"></div>
@@ -246,11 +249,11 @@ function Home() {
                                 className="home-image-composition"
                             >
                                 {/* NOVO SVG atrás */}
-                                <div className="svg-background">
+                                {/* <div className="svg-background">
                                     <svg
-                                        viewBox="0 0 900 600"
-                                        width="1200"
-                                        height="1200"
+                                        viewBox="0 0 1200 1200"
+                                        width="200"
+                                        height="200"
                                         className="abstract-svg"
                                     >
                                         <g transform="translate(416.7151027264783 279.50028151641493)">
@@ -260,7 +263,7 @@ function Home() {
                                             />
                                         </g>
                                     </svg>
-                                </div>
+                                </div> */}
 
                                 {/* Imagem na frente */}
                                 <div className="image-foreground">
@@ -281,242 +284,365 @@ function Home() {
             </div>
 
             <motion.section
+                className="capabilities-section py-5"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+            >
+                <div className="container">
+                    <div className="row justify-content-center">
+                        {/* Cabeçalho */}
+                        <div className="col-12 text-center mb-5">
+                            <motion.h2
+                                className="section-title"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
+                            >
+                                Tecnologia que Transforma a Gestão Pública
+                            </motion.h2>
+                            <motion.p
+                                className="section-subtitle"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                            >
+                                Soluções inovadoras desenvolvidas especificamente para os desafios do setor público
+                            </motion.p>
+                        </div>
+                    </div>
+
+                    {/* Grid de Cards */}
+                    <div className="row g-4">
+                        {/* Card 1 - Cloud Nativa */}
+                        <div className="col-lg-4 col-md-6">
+                            <motion.div
+                                className="capability-card h-100"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.3 }}
+                                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                            >
+                                <div className="card-icon">
+                                    <Cloud className="icon" />
+                                </div>
+                                <h4 className="card-title">Cloud Nativa</h4>
+                                <p className="card-description">
+                                    Conte com um sistema de gestão 100% em nuvem e referência em qualidade.
+                                    Alta performance, estabilidade e segurança que somente um sistema nativo web oferece.
+                                </p>
+                            </motion.div>
+                        </div>
+
+                        {/* Card 2 - Sistema Único */}
+                        <div className="col-lg-4 col-md-6">
+                            <motion.div
+                                className="capability-card h-100"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.4 }}
+                                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                            >
+                                <div className="card-icon">
+                                    <Database className="icon" />
+                                </div>
+                                <h4 className="card-title">Sistema Único</h4>
+                                <p className="card-description">
+                                    Experiência inteligente e fluída para servidores, gestores e cidadãos.
+                                    Gestão 360º com Cadastro Único integrado para resultados extraordinários.
+                                </p>
+                            </motion.div>
+                        </div>
+
+                        {/* Card 3 - Tecnologia Web */}
+                        <div className="col-lg-4 col-md-6">
+                            <motion.div
+                                className="capability-card h-100"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.5 }}
+                                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                            >
+                                <div className="card-icon">
+                                    <Globe className="icon" />
+                                </div>
+                                <h4 className="card-title">Tecnologia Web</h4>
+                                <p className="card-description">
+                                    Sistema nativo web que funciona em qualquer dispositivo.
+                                    Acesse de computador, tablet ou celular, 24h por dia, 7 dias por semana.
+                                </p>
+                            </motion.div>
+                        </div>
+
+                        {/* Card 4 - Autoatendimento */}
+                        <div className="col-lg-4 col-md-6">
+                            <motion.div
+                                className="capability-card h-100"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.6 }}
+                                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                            >
+                                <div className="card-icon">
+                                    <Smartphone className="icon" />
+                                </div>
+                                <h4 className="card-title">Autoatendimento</h4>
+                                <p className="card-description">
+                                    Experiências encantadoras de autoatendimento via Internet e aplicativo.
+                                    Sem filas, sempre disponível, 24h por dia para o cidadão.
+                                </p>
+                            </motion.div>
+                        </div>
+
+                        {/* Card 5 - Inovação Tecnológica */}
+                        <div className="col-lg-4 col-md-6">
+                            <motion.div
+                                className="capability-card h-100"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.7 }}
+                                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                            >
+                                <div className="card-icon">
+                                    <Cpu className="icon" />
+                                </div>
+                                <h4 className="card-title">Inovação Tecnológica</h4>
+                                <p className="card-description">
+                                    Reconhecimento de voz, IoT e indicadores em tempo real.
+                                    Transformamos as melhores tecnologias em soluções para a gestão pública.
+                                </p>
+                            </motion.div>
+                        </div>
+
+                        {/* Card 6 - Inteligência Artificial */}
+                        <div className="col-lg-4 col-md-6">
+                            <motion.div
+                                className="capability-card h-100"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.8 }}
+                                whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                            >
+                                <div className="card-icon">
+                                    <Brain className="icon" />
+                                </div>
+                                <h4 className="card-title">IA para Gestão Pública</h4>
+                                <p className="card-description">
+                                    Inteligência Artificial especializada para ajudar você a decidir, gerir e antecipar tendências.
+                                    A tecnologia trabalhando a serviço da gestão pública.
+                                </p>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </motion.section>
+
+            <motion.section
                 className="about-section"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
             >
-                <div className="container">
-                    <div className="row justify-content-center">
-                        {/* Cabeçalho Quem Somos */}
-                        <div className="col-12 text-center mb-5">
-                            <h2 className="services-title">Quem Somos?</h2>
-                        </div>
+               <AboutSection />
 
-                        {/* Texto de Introdução */}
-                        <div className="col-12 mb-5">
-                            <div className="about-intro-container">
-                                <div className="about-text-wrapper">
-                                    <p className="about-main-text">
-                                        A <strong>PROSYSTEMA</strong> é uma <strong>plataforma tecnológica completa</strong> que atua como
-                                        <strong> hub central</strong>, integrando e consolidando dados de diversas fontes para transformar
-                                        informações em <strong>decisões estratégicas que fortalecem o SUS</strong>.
-                                    </p>
+                {/* Conteúdo Principal com Tecnologia e Foco */}
+                <div className="col-12">
+                    <div className="about-content-main">
+                        <div className="row">
+                            {/* Primeira Linha - Nossa Tecnologia */}
+                            <div className="col-12 mb-3">
+                                <motion.div
+                                    className="tech-row"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.4 }}
+                                    style={{
+                                        backgroundImage: `url(${techRow})`,
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center',
+                                        backgroundRepeat: 'no-repeat'
+                                    }}
+                                >
+                                    <div className="row align-items-center">
+                                        {/* SVG com Imagem - Coluna 5 */}
+                                        <div className="col-md-5">
+                                            <motion.div
+                                                className="svg-image-container left"
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ duration: 0.6, delay: 0.5 }}
+                                            >
+                                                <div className="custom-svg-wrapper">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 480 480"
+                                                        className="custom-svg"
+                                                        preserveAspectRatio="xMidYMid meet"
+                                                    >
+                                                        <path
+                                                            d="M0 0h230c138 0 250 112 250 250v230H250C112 480 0 368 0 230V0Z"
+                                                            fill="#1976d2"
+                                                        />
+                                                        <foreignObject x="0" y="0" width="480" height="480">
+                                                            <div
+                                                                xmlns="http://www.w3.org/1999/xhtml"
+                                                                style={{
+                                                                    width: "100%",
+                                                                    height: "100%",
+                                                                    overflow: "hidden",
+                                                                    borderRadius: "0 200px 0 200px",
+                                                                }}
+                                                            >
+                                                                <img
+                                                                    src={twoMedicalAbout}
+                                                                    alt="Tecnologia PROSYSTEMA"
+                                                                    style={{
+                                                                        width: "100%",
+                                                                        height: "100%",
+                                                                        objectFit: "cover",
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                        </foreignObject>
+                                                    </svg>
+                                                </div>
+                                            </motion.div>
+                                        </div>
 
-                                    <div className="about-main-text">
-                                        <p>
-                                            Nossa plataforma atua como um <strong>hub central</strong>, integrando e consolidando dados de
-                                            diversas fontes (incluindo RNDS, TABWIN/SIA-SIH, sistemas legados e bases públicas).
-                                        </p>
-                                        <p>
-                                            Os dados são transformados em <strong>informações estratégicas e acessíveis em tempo real</strong>&nbsp;
-                                            via painéis de Business Intelligence (BI) e relatórios analíticos, fornecendo o subsídio
-                                            necessário para a <strong>tomada de decisão em todos os níveis de assistência</strong>.
-                                        </p>
+                                        {/* Conteúdo - Coluna 7 */}
+                                        <div className="col-md-7">
+                                            <div className="tech-content">
+                                                <div className="column-header text-left">
+                                                    <h3 className="column-title">Nossa Tecnologia</h3>
+                                                </div>
+                                                <div className="tech-items">
+                                                    <div className="tech-item">
+                                                        <div className="tech-bullet"></div>
+                                                        <span>Tecnologia de ponta</span>
+                                                    </div>
+                                                    <div className="tech-item">
+                                                        <div className="tech-bullet"></div>
+                                                        <span>Inteligência Artificial aplicada</span>
+                                                    </div>
+                                                    <div className="tech-item">
+                                                        <div className="tech-bullet"></div>
+                                                        <span>Análise avançada de dados</span>
+                                                    </div>
+                                                    <div className="tech-item">
+                                                        <div className="tech-bullet"></div>
+                                                        <span>Gestão baseada em evidências</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </motion.div>
                             </div>
-                        </div>
 
-                        {/* Conteúdo Principal com Tecnologia e Foco */}
-                        <div className="col-12">
-                            <div className="about-content-main">
-                                <div className="row">
-                                    {/* Primeira Linha - Nossa Tecnologia */}
-                                    <div className="col-12 mb-3">
-                                        <motion.div
-                                            className="tech-row"
-                                            initial={{ opacity: 0, y: 30 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.6, delay: 0.4 }}
-                                            style={{
-                                                backgroundImage: `url(${techRow})`,
-                                                backgroundSize: 'cover',
-                                                backgroundPosition: 'center',
-                                                backgroundRepeat: 'no-repeat'
-                                            }}
-                                        >
-                                            <div className="row align-items-center">
-                                                {/* SVG com Imagem - Coluna 5 */}
-                                                <div className="col-md-5">
-                                                    <motion.div
-                                                        className="svg-image-container left"
-                                                        initial={{ opacity: 0, scale: 0.8 }}
-                                                        animate={{ opacity: 1, scale: 1 }}
-                                                        transition={{ duration: 0.6, delay: 0.5 }}
-                                                    >
-                                                        <div className="custom-svg-wrapper">
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 480 480"
-                                                                className="custom-svg"
-                                                                preserveAspectRatio="xMidYMid meet"
-                                                            >
-                                                                <path
-                                                                    d="M0 0h230c138 0 250 112 250 250v230H250C112 480 0 368 0 230V0Z"
-                                                                    fill="#1976d2"
-                                                                />
-                                                                <foreignObject x="0" y="0" width="480" height="480">
-                                                                    <div
-                                                                        xmlns="http://www.w3.org/1999/xhtml"
-                                                                        style={{
-                                                                            width: "100%",
-                                                                            height: "100%",
-                                                                            overflow: "hidden",
-                                                                            borderRadius: "0 200px 0 200px",
-                                                                        }}
-                                                                    >
-                                                                        <img
-                                                                            src={twoMedicalAbout}
-                                                                            alt="Tecnologia PROSYSTEMA"
-                                                                            style={{
-                                                                                width: "100%",
-                                                                                height: "100%",
-                                                                                objectFit: "cover",
-                                                                            }}
-                                                                        />
-                                                                    </div>
-                                                                </foreignObject>
-                                                            </svg>
-                                                        </div>
-                                                    </motion.div>
+                            {/* Segunda Linha - Nosso Foco */}
+                            <div className="col-12">
+                                <motion.div
+                                    className="focus-row"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.6 }}
+                                    style={{
+                                        backgroundImage: `url(${focoRow})`,
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center',
+                                        backgroundRepeat: 'no-repeat'
+                                    }}
+                                >
+                                    <div className="row align-items-center">
+                                        <div className="col-md-7">
+                                            <div className="focus-content">
+                                                <div className="column-header text-left">
+                                                    <h3 className="column-title" style={{ color: '#fff' }}>Nosso Foco</h3>
                                                 </div>
-
-                                                {/* Conteúdo - Coluna 7 */}
-                                                <div className="col-md-7">
-                                                    <div className="tech-content">
-                                                        <div className="column-header text-left">
-                                                            <h3 className="column-title">Nossa Tecnologia</h3>
+                                                <div className="focus-items">
+                                                    <div className="focus-item">
+                                                        <div className="focus-bullet"></div>
+                                                        <div className="focus-text">
+                                                            <h5>Humanização do cuidado</h5>
+                                                            <p>Priorizamos a experiência humana em todos os processos</p>
                                                         </div>
-                                                        <div className="tech-items">
-                                                            <div className="tech-item">
-                                                                <div className="tech-bullet"></div>
-                                                                <span>Tecnologia de ponta</span>
-                                                            </div>
-                                                            <div className="tech-item">
-                                                                <div className="tech-bullet"></div>
-                                                                <span>Inteligência Artificial aplicada</span>
-                                                            </div>
-                                                            <div className="tech-item">
-                                                                <div className="tech-bullet"></div>
-                                                                <span>Análise avançada de dados</span>
-                                                            </div>
-                                                            <div className="tech-item">
-                                                                <div className="tech-bullet"></div>
-                                                                <span>Gestão baseada em evidências</span>
-                                                            </div>
+                                                    </div>
+                                                    <div className="focus-item">
+                                                        <div className="focus-bullet"></div>
+                                                        <div className="focus-text">
+                                                            <h5>Eficiência na gestão</h5>
+                                                            <p>Otimizamos processos para melhor desempenho</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="focus-item">
+                                                        <div className="focus-bullet"></div>
+                                                        <div className="focus-text">
+                                                            <h5>Qualidade assistencial</h5>
+                                                            <p>Garantimos padrões elevados de atendimento</p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="focus-item">
+                                                        <div className="focus-bullet"></div>
+                                                        <div className="focus-text">
+                                                            <h5>Resultados mensuráveis</h5>
+                                                            <p>Acompanhamos métricas para comprovar eficácia</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </motion.div>
-                                    </div>
+                                        </div>
 
-                                    {/* Segunda Linha - Nosso Foco */}
-                                    <div className="col-12">
-                                        <motion.div
-                                            className="focus-row"
-                                            initial={{ opacity: 0, y: 30 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.6, delay: 0.6 }}
-                                            style={{
-                                                backgroundImage: `url(${focoRow})`,
-                                                backgroundSize: 'cover',
-                                                backgroundPosition: 'center',
-                                                backgroundRepeat: 'no-repeat'
-                                            }}
-                                        >
-                                            <div className="row align-items-center">
-                                                <div className="col-md-7">
-                                                    <div className="focus-content">
-                                                        <div className="column-header text-left">
-                                                            <h3 className="column-title" style={{ color: '#fff' }}>Nosso Foco</h3>
-                                                        </div>
-                                                        <div className="focus-items">
-                                                            <div className="focus-item">
-                                                                <div className="focus-bullet"></div>
-                                                                <div className="focus-text">
-                                                                    <h5>Humanização do cuidado</h5>
-                                                                    <p>Priorizamos a experiência humana em todos os processos</p>
-                                                                </div>
-                                                            </div>
-                                                            <div className="focus-item">
-                                                                <div className="focus-bullet"></div>
-                                                                <div className="focus-text">
-                                                                    <h5>Eficiência na gestão</h5>
-                                                                    <p>Otimizamos processos para melhor desempenho</p>
-                                                                </div>
-                                                            </div>
-                                                            <div className="focus-item">
-                                                                <div className="focus-bullet"></div>
-                                                                <div className="focus-text">
-                                                                    <h5>Qualidade assistencial</h5>
-                                                                    <p>Garantimos padrões elevados de atendimento</p>
-                                                                </div>
-                                                            </div>
-                                                            <div className="focus-item">
-                                                                <div className="focus-bullet"></div>
-                                                                <div className="focus-text">
-                                                                    <h5>Resultados mensuráveis</h5>
-                                                                    <p>Acompanhamos métricas para comprovar eficácia</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                {/* SVG COM IMAGEM - Coluna 5 */}
-                                                <div className="col-md-5">
-                                                    <motion.div
-                                                        className="svg-image-container right"
-                                                        initial={{ opacity: 0, scale: 0.8 }}
-                                                        animate={{ opacity: 1, scale: 1 }}
-                                                        transition={{ duration: 0.6, delay: 0.7 }}
+                                        {/* SVG COM IMAGEM - Coluna 5 */}
+                                        <div className="col-md-5">
+                                            <motion.div
+                                                className="svg-image-container right"
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ duration: 0.6, delay: 0.7 }}
+                                            >
+                                                <div className="custom-svg-wrapper">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 480 480"
+                                                        className="custom-svg"
+                                                        preserveAspectRatio="xMidYMid meet"
                                                     >
-                                                        <div className="custom-svg-wrapper">
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 480 480"
-                                                                className="custom-svg"
-                                                                preserveAspectRatio="xMidYMid meet"
+                                                        <path
+                                                            d="M0 0h230c138 0 250 112 250 250v230H250C112 480 0 368 0 230V0Z"
+                                                            fill="#2ecc71"
+                                                        />
+                                                        <foreignObject x="0" y="0" width="480" height="480">
+                                                            <div
+                                                                xmlns="http://www.w3.org/1999/xhtml"
+                                                                style={{
+                                                                    width: "100%",
+                                                                    height: "100%",
+                                                                    overflow: "hidden",
+                                                                    borderRadius: "0 200px 0 200px",
+                                                                }}
                                                             >
-                                                                <path
-                                                                    d="M0 0h230c138 0 250 112 250 250v230H250C112 480 0 368 0 230V0Z"
-                                                                    fill="#2ecc71"
+                                                                <img
+                                                                    src={medical}
+                                                                    alt="Foco PROSYSTEMA"
+                                                                    style={{
+                                                                        width: "100%",
+                                                                        height: "100%",
+                                                                        objectFit: "cover",
+                                                                    }}
                                                                 />
-                                                                <foreignObject x="0" y="0" width="480" height="480">
-                                                                    <div
-                                                                        xmlns="http://www.w3.org/1999/xhtml"
-                                                                        style={{
-                                                                            width: "100%",
-                                                                            height: "100%",
-                                                                            overflow: "hidden",
-                                                                            borderRadius: "0 200px 0 200px",
-                                                                        }}
-                                                                    >
-                                                                        <img
-                                                                            src={medical}
-                                                                            alt="Foco PROSYSTEMA"
-                                                                            style={{
-                                                                                width: "100%",
-                                                                                height: "100%",
-                                                                                objectFit: "cover",
-                                                                            }}
-                                                                        />
-                                                                    </div>
-                                                                </foreignObject>
-                                                            </svg>
-                                                        </div>
-                                                    </motion.div>
+                                                            </div>
+                                                        </foreignObject>
+                                                    </svg>
                                                 </div>
-                                            </div>
-                                        </motion.div>
+                                            </motion.div>
+                                        </div>
                                     </div>
-                                </div>
+                                </motion.div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <TechnologyScroll />
             </motion.section>
 
             {/* Seção Nossos Serviços - APÓS o gradiente */}
@@ -592,7 +718,7 @@ function Home() {
             </motion.section>
 
             {/* Seção Tecnologia que Transforma a Gestão em Resultados */}
-            <motion.section
+            {/* <motion.section
                 className="technology-section"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -605,8 +731,7 @@ function Home() {
                         </h2>
                     </div>
 
-                    <div className="row align-items-stretch g-0"> {/* Removido gap com g-0 */}
-                        {/* Coluna da imagem */}
+                    <div className="row align-items-stretch g-0">
                         <div className="col-lg-4">
                             <motion.div
                                 className="technology-image-container"
@@ -626,7 +751,6 @@ function Home() {
                             </motion.div>
                         </div>
 
-                        {/* Coluna dos cards */}
                         <div className="col-lg-8">
                             <div className="technology-content h-100">
                                 <div className="features-grid-cards h-100">
@@ -705,7 +829,8 @@ function Home() {
                         </div>
                     </div>
                 </div>
-            </motion.section>
+            </motion.section> */}
+
         </>
     );
 }

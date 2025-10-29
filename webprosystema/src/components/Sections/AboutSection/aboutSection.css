@@ -1,0 +1,551 @@
+.about-section-grid {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Container da Galeria Quadrada */
+.square-gallery-container {
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* SVG de fundo */
+.svg-background {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 100%;
+    height: 90%;
+    opacity: 0.8;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.svg-background svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    /* gap: 25px; */
+    width: 100%;
+    height: 60%;
+    aspect-ratio: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    z-index: 2;
+}
+
+/* Classes específicas para os border radius - COMBINAÇÕES FLEXÍVEIS */
+
+/* Bordas individuais */
+.grid-item.top-left {
+    border-radius: 50px 0 0 0;
+}
+
+.grid-item.top-right {
+    border-radius: 0 50px 0 0;
+}
+
+.grid-item.bottom-right {
+    border-radius: 0 0 50px 0;
+}
+
+.grid-item.bottom-left {
+    border-radius: 0 0 0 50px;
+}
+
+/* Combinações de 2 bordas */
+.grid-item.top-left.top-right {
+    border-radius: 50px 50px 0 0;
+}
+
+.grid-item.bottom-left.bottom-right {
+    border-radius: 0 0 50px 50px;
+}
+
+.grid-item.top-left.bottom-left {
+    border-radius: 50px 0 0 50px;
+}
+
+.grid-item.top-right.bottom-right {
+    border-radius: 0 50px 50px 0;
+}
+
+.grid-item.top-right.bottom-left {
+    border-radius: 0 50px 0 50px;
+}
+
+.grid-item.top-left.bottom-right {
+    border-radius: 50px 0 50px 0;
+}
+
+/* Combinações de 3 bordas */
+.grid-item.top-left.top-right.bottom-right {
+    border-radius: 50px 50px 50px 0;
+}
+
+.grid-item.top-left.top-right.bottom-left {
+    border-radius: 50px 50px 0 50px;
+}
+
+.grid-item.top-left.bottom-right.bottom-left {
+    border-radius: 50px 0 50px 50px;
+}
+
+.grid-item.top-right.bottom-right.bottom-left {
+    border-radius: 0 50px 50px 50px;
+}
+
+/* Todas as bordas */
+.grid-item.all {
+    border-radius: 50px;
+}
+
+/* Sem borda arredondada */
+.grid-item.none {
+    border-radius: 0;
+}
+
+/* Posições específicas para cada item */
+.grid-item:nth-child(1) {
+    transform-origin: bottom right;
+}
+
+.grid-item:nth-child(2) {
+    transform-origin: bottom left;
+}
+
+.grid-item:nth-child(3) {
+    transform-origin: top right;
+}
+
+.grid-item:nth-child(4) {
+    transform-origin: top left;
+}
+
+.grid-item.active {
+    transform: scale(1.08);
+    z-index: 10;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(128, 0, 128, 0.1);
+}
+
+.grid-item:not(.active) {
+    opacity: 1;
+    filter: brightness(0.9);
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.grid-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.grid-item.active .grid-image {
+    transform: scale(1.15);
+}
+
+.grid-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 25px;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.grid-item.active .grid-overlay {
+    transform: translateY(0);
+}
+
+.grid-text {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+}
+
+.grid-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid transparent;
+    transition: all 0.4s ease;
+}
+
+/* Aplicar border radius específico para a borda também */
+.grid-item.top-left .grid-border {
+    border-radius: 50px 0 0 0;
+}
+
+.grid-item.top-right .grid-border {
+    border-radius: 0 50px 0 0;
+}
+
+.grid-item.bottom-right .grid-border {
+    border-radius: 0 0 50px 0;
+}
+
+.grid-item.bottom-left .grid-border {
+    border-radius: 0 0 0 50px;
+}
+
+.grid-item.top-left.top-right .grid-border {
+    border-radius: 50px 50px 0 0;
+}
+
+.grid-item.bottom-left.bottom-right .grid-border {
+    border-radius: 0 0 50px 50px;
+}
+
+.grid-item.top-left.bottom-left .grid-border {
+    border-radius: 50px 0 0 50px;
+}
+
+.grid-item.top-right.bottom-right .grid-border {
+    border-radius: 0 50px 50px 0;
+}
+
+.grid-item.top-right.bottom-left .grid-border {
+    border-radius: 0 50px 0 50px;
+}
+
+.grid-item.top-left.bottom-right .grid-border {
+    border-radius: 50px 0 50px 0;
+}
+
+.grid-item.top-left.top-right.bottom-right .grid-border {
+    border-radius: 50px 50px 50px 0;
+}
+
+.grid-item.top-left.top-right.bottom-left .grid-border {
+    border-radius: 50px 50px 0 50px;
+}
+
+.grid-item.top-left.bottom-right.bottom-left .grid-border {
+    border-radius: 50px 0 50px 50px;
+}
+
+.grid-item.top-right.bottom-right.bottom-left .grid-border {
+    border-radius: 0 50px 50px 50px;
+}
+
+.grid-item.all .grid-border {
+    border-radius: 50px;
+}
+
+.grid-item.none .grid-border {
+    border-radius: 0;
+}
+
+.grid-item.active .grid-border {
+    border-color: #667eea;
+    box-shadow: 0 0 30px rgba(102, 126, 234, 0.4);
+}
+
+/* Efeitos de brilho específicos para cada tipo de borda */
+.grid-item.top-right.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at top right, rgba(102, 126, 234, 0.6) 0%, transparent 70%);
+    z-index: 2;
+}
+
+.grid-item.top-left.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at top left, rgba(102, 126, 234, 0.6) 0%, transparent 70%);
+    z-index: 2;
+}
+
+.grid-item.bottom-right.active::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at bottom right, rgba(102, 126, 234, 0.6) 0%, transparent 70%);
+    z-index: 2;
+}
+
+.grid-item.bottom-left.active::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at bottom left, rgba(102, 126, 234, 0.6) 0%, transparent 70%);
+    z-index: 2;
+}
+
+.grid-item.all.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+    z-index: 2;
+}
+
+.grid-item.none.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid rgba(36, 123, 150, 0.4);
+    z-index: 2;
+}
+
+/* Conteúdo About Us */
+.grid-about-content {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-card {
+    backdrop-filter: blur(15px);
+    border-radius: 60px 20px;
+    padding: 40px;
+    margin: 5px;
+}
+
+.grid-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: #263238;
+    line-height: 1.19;
+    margin-bottom: 25px;
+}
+
+.title-accent {
+    display: block;
+    background: linear-gradient(135deg, #0a85eb 0%, #0b8070 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.grid-description {
+    font-size: 1.2rem;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 45px;
+    border-left: 5px solid #0a85eb;
+    padding-left: 25px;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    margin: 45px 0;
+    padding: 35px 0;
+    border-top: 2px solid #e2e8f0;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #1976d2 0%, #0a85eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: #718096;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* Conteúdo Original */
+.original-content {
+    margin-top: 45px;
+    padding-top: 35px;
+    border-top: 2px solid #e2e8f0;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    color: #4a5568;
+    line-height: 1.8;
+}
+
+.about-text strong {
+    color: #0a85eb;
+    font-weight: 700;
+}
+
+/* Animações */
+@keyframes fadeInScale {
+    from {
+        opacity: 1;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.content-card {
+    animation: fadeInScale 0.8s ease-out;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .grid-title {
+        font-size: 2.8rem;
+    }
+
+    .gallery-grid-2x2 {
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 992px) {
+    .about-section-grid {
+        padding: 50px 0;
+    }
+
+    .square-gallery-container {
+        padding: 25px;
+        margin-bottom: 50px;
+    }
+
+    .gallery-grid-2x2 {
+        max-width: 500px;
+        gap: 20px;
+    }
+
+    .grid-about-content {
+        padding: 25px;
+    }
+
+    .content-card {
+        border-radius: 40px 20px;
+        padding: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-title {
+        font-size: 2.3rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .gallery-grid-2x2 {
+        max-width: 450px;
+        gap: 18px;
+    }
+
+    .content-card {
+        padding: 30px 25px;
+        border-radius: 30px 15px;
+    }
+
+    /* Ajustar border-radius para mobile */
+    .grid-item[class*="top-"] {
+        border-radius: 30px 30px 0 0 !important;
+    }
+
+    .grid-item[class*="bottom-"] {
+        border-radius: 0 0 30px 30px !important;
+    }
+
+    .grid-item.all {
+        border-radius: 30px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-grid-2x2 {
+        max-width: 400px;
+        gap: 15px;
+    }
+
+    .grid-title {
+        font-size: 2rem;
+    }
+
+    .grid-description {
+        font-size: 1.1rem;
+    }
+
+    .content-card {
+        padding: 25px 20px;
+        border-radius: 25px 10px;
+    }
+
+    .stat-number {
+        font-size: 2.2rem;
+    }
+}

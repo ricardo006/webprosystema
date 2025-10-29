@@ -1,0 +1,214 @@
+.technology-scroll-section {
+    background: linear-gradient(5deg, #1976d2, #50aefa);
+    color: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    isolation: isolate;
+}
+
+/* Container das partículas limitado à seção */
+.particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Garantir que o conteúdo fique acima das partículas */
+.technology-scroll-title,
+.scroll-viewport {
+    position: relative;
+    z-index: 2;
+}
+
+.technology-scroll-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-viewport {
+    width: 100%;
+    /* overflow: hidden; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+.scroll-track {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: nowrap;
+    width: max-content;
+    align-items: center;
+}
+
+/* BOLHAS (cards) */
+.bubble-card {
+    flex: 0 0 260px;
+    height: 260px;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow:
+        inset 0 0 25px rgba(255, 255, 255, 0.1),
+        0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    padding: 1.5rem;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 3;
+    /* Garante que fique acima de tudo */
+}
+
+/* Alturas diferentes */
+.bubble-card.high {
+    margin-top: -20px;
+}
+
+.bubble-card.low {
+    margin-top: 20px;
+}
+
+/* Sombra pulsante ao fundo */
+.bubble-shadow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.bubble-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.bubble-icon {
+    margin-bottom: 1rem;
+    color: #fff;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.bubble-text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    max-width: 200px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.4;
+}
+
+/* Efeitos de hover */
+.bubble-card:hover {
+    box-shadow:
+        inset 0 0 35px rgba(255, 255, 255, 0.15),
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 2px rgba(255, 255, 255, 0.1);
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.08));
+    backdrop-filter: blur(15px);
+}
+
+/* Animações de pulso para o ícone */
+.bubble-icon {
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 992px) {
+    .bubble-card {
+        flex: 0 0 200px;
+        height: 200px;
+    }
+
+    .bubble-shadow {
+        width: 220px;
+        height: 220px;
+    }
+
+    .bubble-card.high {
+        margin-top: -15px;
+    }
+
+    .bubble-card.low {
+        margin-top: 15px;
+    }
+
+    .technology-scroll-title {
+        font-size: 1.5rem;
+    }
+
+    .bubble-text {
+        font-size: 0.9rem;
+        max-width: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .technology-scroll-section {
+        padding: 3rem 1rem;
+        min-height: 80vh;
+    }
+
+    .bubble-card {
+        flex: 0 0 180px;
+        height: 180px;
+        padding: 1rem;
+    }
+
+    .bubble-shadow {
+        width: 200px;
+        height: 200px;
+    }
+
+    .bubble-icon {
+        margin-bottom: 0.5rem;
+    }
+
+    .bubble-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+}
