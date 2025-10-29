@@ -5,6 +5,7 @@
     right: 0;
     z-index: 1000;
     background: white !important;
+    box-shadow: 0 2px 20px rgba(127, 187, 66, 0.1);
 }
 
 .bg-white {
@@ -30,23 +31,16 @@
     gap: 1.5rem;
 }
 
-/* Imagem da logo em azul */
+/* Imagem da logo */
 .logo-image {
     height: 74px;
     margin-left: 15px;
     width: auto;
-    filter: brightness(0) saturate(100%) invert(24%) sepia(89%) saturate(2593%) hue-rotate(198deg) brightness(93%) contrast(101%);
+    transition: transform 0.3s ease;
 }
 
-/* Texto da logo */
-.logo-text {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #1976d2;
-    background: linear-gradient(135deg, #1976d2, #1565c0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.logo-image:hover {
+    transform: scale(1.05);
 }
 
 /* Container principal */
@@ -80,12 +74,14 @@
     padding: 0.8rem 1.5rem !important;
     margin: 0 0.2rem;
     border-radius: 30px !important;
-    border: 2px solid #e3f2fd !important;
+    border: 2px solid #7fbb42 !important;
+    /* BORDA VERDE */
     transition: all 0.3s ease;
     position: relative;
     text-decoration: none;
     display: block;
     background: white;
+    overflow: hidden;
 }
 
 /* Conteúdo do link com ícone e texto */
@@ -93,34 +89,71 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .nav-icon {
     display: flex;
     align-items: center;
-    color: #1976d2;
+    color: #4383c5;
+    /* AZUL DA LOGO */
+    transition: color 0.3s ease;
 }
 
 .nav-text {
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-/* Efeito hover */
+/* Efeito hover - Gradiente Verde */
 .nav-link:hover {
-    color: #1976d2 !important;
-    background: #f8f9fa !important;
-    border-color: #90caf9 !important;
+    color: white !important;
+    background: linear-gradient(135deg, #7fbb42, #6da83a) !important;
+    border-color: #7fbb42 !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.15);
+    box-shadow: 0 6px 20px rgba(127, 187, 66, 0.3);
 }
 
-/* Item ativo */
+.nav-link:hover .nav-icon {
+    color: white;
+}
+
+.nav-link:hover .nav-text {
+    color: white !important;
+}
+
+/* Item ativo - Gradiente Azul */
 .nav-link.active {
-    color: #1976d2 !important;
-    background: #e3f2fd !important;
-    border-color: #1976d2 !important;
+    color: white !important;
+    background: linear-gradient(135deg, #4383c5, #3a76b0) !important;
+    border-color: #4383c5 !important;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.2);
+    box-shadow: 0 6px 20px rgba(67, 131, 197, 0.3);
+}
+
+.nav-link.active .nav-icon {
+    color: white;
+}
+
+.nav-link.active .nav-text {
+    color: white !important;
+}
+
+/* Efeito de brilho no hover */
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.nav-link:hover::before {
+    left: 100%;
 }
 
 /* Indicador ativo */
@@ -129,25 +162,38 @@
     bottom: -5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 9px;
-    height: 9px;
-    background: #1976d2;
+    width: 8px;
+    height: 8px;
+    background: white;
     border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(67, 131, 197, 0.5);
 }
 
-/* Toggler button */
+/* Toggler button com cores da logo */
 .navbar-toggler {
-    border: 2px solid #e3f2fd !important;
+    border: 2px solid #7fbb42 !important;
     padding: 0.5rem 0.7rem;
     border-radius: 10px !important;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+    background: linear-gradient(135deg, #7fbb42, #6da83a);
+    border-color: #7fbb42 !important;
 }
 
 .navbar-toggler:focus {
-    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.25) !important;
+    box-shadow: 0 0 0 3px rgba(127, 187, 66, 0.25) !important;
 }
 
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2825, 118, 210, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%237fbb42' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    transition: background-image 0.3s ease;
+}
+
+.navbar-toggler:hover .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
 /* Responsividade */
@@ -182,12 +228,8 @@
         bottom: 5px;
     }
 
-    .logo-text {
-        font-size: 1.5rem;
-    }
-
     .logo-image {
-        height: 35px;
+        height: 60px;
     }
 }
 
@@ -205,12 +247,8 @@
         font-size: 0.9rem;
     }
 
-    .logo-text {
-        font-size: 1.3rem;
-    }
-
     .logo-image {
-        height: 30px;
+        height: 50px;
     }
 
     .logo-wrapper {
@@ -233,4 +271,9 @@
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+/* Efeito de sombra ao scroll */
+.main-header.scrolled {
+    box-shadow: 0 4px 30px rgba(127, 187, 66, 0.15);
 }

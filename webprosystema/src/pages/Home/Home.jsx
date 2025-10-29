@@ -266,7 +266,7 @@ function Home() {
                                 </div> */}
 
                                 {/* Imagem na frente */}
-                                <div className="image-foreground">
+                                {/* <div className="image-foreground">
                                     <motion.img
                                         src={healtImageHome}
                                         alt="Inovação em saúde e tecnologia"
@@ -276,7 +276,7 @@ function Home() {
                                         transition={{ duration: 0.8, delay: 0.5 }}
                                         whileHover={{ scale: 1.15 }}
                                     />
-                                </div>
+                                </div> */}
                             </motion.div>
                         </div>
                     </div>
