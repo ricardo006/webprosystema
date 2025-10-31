@@ -278,7 +278,7 @@
 }
 
 .grid-item.active .grid-border {
-    border-color: #667eea;
+    border-color: #7dba41;
     box-shadow: 0 0 30px rgba(102, 126, 234, 0.4);
 }
 
@@ -374,7 +374,7 @@
 
 .title-accent {
     display: block;
-    background: linear-gradient(135deg, #0a85eb 0%, #0b8070 100%);
+    background: linear-gradient(125deg, #42a5f5 0%, #1263cc 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -382,10 +382,10 @@
 
 .grid-description {
     font-size: 1.2rem;
-    color: #4a5568;
+    color: #263238;
     line-height: 1.7;
     margin-bottom: 45px;
-    border-left: 5px solid #0a85eb;
+    border-left: 5px solid #42a5f5;
     padding-left: 25px;
 }
 
@@ -406,7 +406,7 @@
 .stat-number {
     font-size: 2.8rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #1976d2 0%, #0a85eb 100%);
+    background: linear-gradient(135deg, #42a5f5 0%, #0a85eb 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

@@ -70,7 +70,7 @@
 
 .nav-link {
     font-weight: 500;
-    color: #666 !important;
+    color: #7fbb42 !important;
     padding: 0.8rem 1.5rem !important;
     margin: 0 0.2rem;
     border-radius: 30px !important;
@@ -96,8 +96,7 @@
 .nav-icon {
     display: flex;
     align-items: center;
-    color: #4383c5;
-    /* AZUL DA LOGO */
+    color: #7fbb42;
     transition: color 0.3s ease;
 }
 

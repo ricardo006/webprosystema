@@ -6,6 +6,7 @@ import About from './pages/About/About.jsx';
 import Services from './pages/Services/Services.jsx';
 import Portfolio from './pages/Portfolio/Portfolio.jsx';
 import Contact from './pages/Contact/Contact.jsx';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop.jsx';
 import './App.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                         <Route path="/contato" element={<Contact />} />
                     </Routes>
                 </div>
+                <ScrollToTop />
             </main>
 
             <Footer />

@@ -50,7 +50,15 @@ const AboutSection = () => {
                         <div className="square-gallery-container">
                             {/* SVG de fundo */}
                             <div className="svg-background">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480"><path d="M320 160a160 160 0 1 0-320 0v320h160V160h160ZM320 0v320H160a160 160 0 1 0 320 0V0H320Z" fill="#1565c0"></path></svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
+                                    <defs>
+                                        <linearGradient id="meuGradiente" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stopColor="#42a5f5" /> 
+                                            <stop offset="100%" stopColor="#36ca5bff" /> 
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M320 160a160 160 0 1 0-320 0v320h160V160h160ZM320 0v320H160a160 160 0 1 0 320 0V0H320Z" fill="url(#meuGradiente)"></path></svg>
                             </div>
 
                             <div className="gallery-grid-2x2">

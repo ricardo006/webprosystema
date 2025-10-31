@@ -1,6 +1,6 @@
 /* ===== SEÇÃO PRINCIPAL COM GRADIENTE - IGUAL À HOME ===== */
 .services-home-container {
-    background: linear-gradient(135deg, #edf4f8 0%, #e7eef7 25%, #7db9eb 50%, #0A9CF2 75%, #0A9CF2 100%);
+    background: linear-gradient(135deg, rgb(173, 216, 241) 0%, #76b6f7 25%, #72a9e0 50%, #64a7e9 75%, #4383c5 100%);
     display: flex;
     align-items: center;
     position: relative;
@@ -145,10 +145,6 @@
     left: -15px;
     right: -15px;
     bottom: -15px;
-    background: linear-gradient(45deg,
-            rgba(10, 156, 242, 0.3),
-            rgba(25, 118, 210, 0.4),
-            rgba(66, 165, 245, 0.3));
     border-radius: 50%;
     z-index: -1;
     opacity: 0.7;
@@ -176,7 +172,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border: 3px solid rgba(255, 255, 255, 0.3);
+    border: 3px solid rgba(152, 236, 208, 0.3);
     border-radius: 50%;
     pointer-events: none;
     z-index: 2;

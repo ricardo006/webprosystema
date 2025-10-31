@@ -1,8 +1,13 @@
 import { motion } from 'framer-motion';
-import { Target, Users, Award, Heart, Shield, Zap } from 'lucide-react';
+import { Target, Award, Heart, CheckCircle } from 'lucide-react';
 import { useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import '../About/about.css';
+
+// Importe apenas 3 imagens
+import MissaoImg from '../../assets/img/banner-medico-com-estetoscopio.jpg';
+import VisaoImg from '../../assets/img/banner-medico-com-estetoscopio.jpg';
+import ValoresImg from '../../assets/img/banner-medico-com-estetoscopio.jpg';
 
 function About() {
     const metricsRef = useRef(null);
@@ -19,89 +24,34 @@ function About() {
         {
             icon: Target,
             title: "Missão",
-            description: "Transformar dados em decisões estratégicas que fortalecem o SUS e melhoram a qualidade do atendimento à população."
+            description: "Promover a transformação digital da Rede Assistencial em Saúde por meio de uma plataforma tecnológica integrada, capaz de centralizar, qualificar e transformar dados em informações estratégicas. Nossa missão é apoiar a gestão pública na tomada de decisões em tempo real, fortalecer a coordenação do cuidado e assegurar um atendimento mais eficiente, humanizado e transparente ao cidadão.",
+            image: MissaoImg,
+            colClass: "col-lg-6 col-md-6"
         },
         {
             icon: Award,
             title: "Visão",
-            description: "Ser referência nacional em tecnologia para gestão em saúde, reconhecida pela inovação e impacto social positivo."
+            description: "Ser referência nacional em soluções inteligentes para a gestão integrada da saúde pública, consolidando dados assistenciais e operacionais em um ecossistema único que conecte serviços, profissionais e cidadãos. Almejamos impulsionar uma nova era de governança em saúde, orientada por dados, interoperabilidade e inovação contínua.",
+            image: VisaoImg,
+            colClass: "col-lg-6 col-md-6"
         },
         {
             icon: Heart,
             title: "Valores",
-            description: "Inovação, transparência, compromisso social, excelência técnica e humanização do cuidado em saúde."
+            description: "Nossos valores fundamentais guiam cada decisão e ação em nossa empresa:",
+            image: ValoresImg,
+            colClass: "col-12",
+            valoresLista: [
+                "Inovação: Utilizamos tecnologias avançadas, como Inteligência Artificial e modelos de linguagem, para oferecer recursos inteligentes e preditivos que aprimoram a gestão e o cuidado.",
+                "Integração: Promovemos a interoperabilidade entre sistemas e níveis de atenção, garantindo a continuidade e a integralidade do cuidado ao cidadão.",
+                "Transparência: Incentivamos a gestão baseada em evidências e dados abertos, fortalecendo a confiança nos serviços públicos de saúde.",
+                "Eficiência: Buscamos otimizar recursos assistenciais e operacionais, aprimorando fluxos e processos em toda a rede.",
+                "Humanização: Colocamos o cidadão no centro do cuidado, apoiando os profissionais de saúde com ferramentas que favorecem o atendimento resolutivo e empático.",
+                "Colaboração: Valorizamos o trabalho em rede, a integração entre equipes e a corresponsabilidade entre gestão, profissionais e tecnologia.",
+                "Segurança da Informação: Garantimos confidencialidade, integridade e rastreabilidade dos dados, em conformidade com as normas legais e éticas vigentes."
+            ]
         }
     ];
-
-    // Atualize o array metricsData com ícones
-    const metricsData = [
-        {
-            key: "establishments",
-            value: 2500,
-            label: "Estabelecimentos de Saúde Atendidos",
-            icon: Users // ou outro ícone apropriado
-        },
-        {
-            key: "records",
-            value: 20000000,
-            label: "De Registros em Prontuários Eletrônicos",
-            icon: Shield
-        },
-        {
-            key: "people",
-            value: 10000000,
-            label: "De Pessoas Atendidas Pelo Sistema",
-            icon: Heart
-        },
-        {
-            key: "cities",
-            value: 250,
-            label: "Cidades Utilizando as Soluções CELK",
-            icon: Target
-        }
-    ];
-
-    useEffect(() => {
-        if (isInView) {
-            const duration = 2000;
-            const steps = 60;
-            const stepDuration = duration / steps;
-
-            metricsData.forEach(metric => {
-                let currentStep = 0;
-                const startValue = 0;
-                const endValue = metric.value;
-                const increment = (endValue - startValue) / steps;
-
-                const timer = setInterval(() => {
-                    currentStep++;
-                    const newValue = Math.min(
-                        Math.floor(startValue + (increment * currentStep)),
-                        endValue
-                    );
-
-                    setCounters(prev => ({
-                        ...prev,
-                        [metric.key]: newValue
-                    }));
-
-                    if (currentStep >= steps) {
-                        clearInterval(timer);
-                    }
-                }, stepDuration);
-            });
-        }
-    }, [isInView]);
-
-    const formatNumber = (num) => {
-        if (num >= 1000000) {
-            return (num / 1000000).toFixed(0) + ' Milhões';
-        }
-        if (num >= 1000) {
-            return (num / 1000).toFixed(0) + ' Mil';
-        }
-        return num.toString();
-    };
 
     return (
         <div className="about-page">
@@ -133,7 +83,7 @@ function About() {
                                     <h1 className="about-main-title">
                                         Nossa Empresa
                                     </h1>
-                                    
+
                                     <p className="about-subtitle">
                                         A <strong>PROSYSTEMA</strong> nasceu da necessidade de transformar
                                         a gestão em saúde pública através da tecnologia e inovação.
@@ -145,78 +95,61 @@ function About() {
                                         positivos no Sistema Único de Saúde (SUS).
                                     </p>
                                 </motion.div>
-
-                                {/* Missão, Visão e Valores usando map */}
-                                <div className="row about-features-row">
-                                    {featuresData.map((feature, index) => (
-                                        <div className="col-md-4 mb-4" key={feature.title}>
-                                            <motion.div
-                                                className="about-feature-card"
-                                                initial={{ opacity: 0, y: 30 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: 1.2 + (index * 0.2), duration: 0.6 }}
-                                                whileHover={{ y: -5, scale: 1.02 }}
-                                            >
-                                                <feature.icon size={48} className="about-feature-icon" />
-                                                <h4 className="about-feature-title">{feature.title}</h4>
-                                                <p className="about-feature-text">{feature.description}</p>
-                                            </motion.div>
-                                        </div>
-                                    ))}
-                                </div>
                             </motion.div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Segunda Seção - Métricas com Fundo Branco */}
-            <div className="about-section about-section-metrics" ref={metricsRef}>
+            {/* Seção Missão, Visão e Valores COM IMAGENS */}
+            <div className="valores-section">
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-12">
-                            <motion.div
-                                className="metrics-container"
-                                initial={{ opacity: 0, y: 50 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                                transition={{ duration: 0.8 }}
-                            >
+                        {featuresData.map((feature, index) => (
+                            <div className={`${feature.colClass} mb-4`} key={feature.title}>
                                 <motion.div
-                                    className="metrics-header text-center"
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                                    transition={{ delay: 0.2, duration: 0.8 }}
+                                    className={`valor-card ${feature.colClass === 'col-12' ? 'valor-card-full' : ''}`}
+                                    initial={{
+                                        opacity: 0,
+                                        x: index === 0 ? -50 : index === 1 ? 50 : 0,
+                                        y: index === 2 ? 50 : 0
+                                    }}
+                                    animate={{ opacity: 1, x: 0, y: 0 }}
+                                    transition={{ duration: 0.6, delay: (index + 1) * 0.1 }}
                                 >
-                                    <Zap className="metrics-header-icon" size={48} />
-                                    <h2 className="metrics-main-title">
-                                        Nossos <span className="metrics-title-highlight">Números</span>
-                                    </h2>
-                                    <p className="metrics-subtitle">
-                                        Impacto real da PROSYSTEMA na Saúde Pública Brasileira!
-                                    </p>
-                                </motion.div>
+                                    <div className="valor-content-wrapper">
+                                        <div className="valor-image-container">
+                                            <img
+                                                src={feature.image}
+                                                alt={feature.title}
+                                                className="valor-image"
+                                            />
+                                            <div className="valor-icon-overlay">
+                                                {feature.icon === Target && <Target size={32} className="valor-icon" />}
+                                                {feature.icon === Award && <Award size={32} className="valor-icon" />}
+                                                {feature.icon === Heart && <Heart size={32} className="valor-icon" />}
+                                            </div>
+                                        </div>
+                                        <div className="valor-text-content">
+                                            <h3 className="valor-title">{feature.title}</h3>
+                                            <p className="valor-description">{feature.description}</p>
 
-                                <div className="metrics-grid">
-                                    {metricsData.map((metric, index) => (
-                                        <motion.divdiv className="metric-card-inner">
-                                            <div className="metric-icon-wrapper">
-                                                <metric.icon size={32} className="metric-icon" />
-                                            </div>
-                                            <div className="metric-content">
-                                                <div className="metric-number">
-                                                    +{formatNumber(counters[metric.key])}
+                                            {/* Lista de valores apenas para o card de Valores */}
+                                            {feature.valoresLista && (
+                                                <div className="valores-lista">
+                                                    {feature.valoresLista.map((item, idx) => (
+                                                        <div key={idx} className="valor-item">
+                                                            <CheckCircle size={20} className="valor-check-icon" />
+                                                            <span className="valor-item-text">{item}</span>
+                                                        </div>
+                                                    ))}
                                                 </div>
-                                                <div className="metric-line"></div>
-                                                <div className="metric-label">
-                                                    {metric.label}
-                                                </div>
-                                            </div>
-                                            <div className="metric-glow"></div>
-                                        </motion.divdiv>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

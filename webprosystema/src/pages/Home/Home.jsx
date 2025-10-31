@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import "../Home/home.css";
-import { motion } from 'framer-motion';
-import { useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useCallback, useState, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import {
@@ -42,6 +42,7 @@ import VisaoIcon from "../../assets/icons/icon3.png";
 import AcompanhamentoIcon from "../../assets/icons/icon4.png";
 import AnalisesIcon from "../../assets/icons/icon5.png";
 import ApoioIcon from "../../assets/icons/icon6.png";
+import backgroundHomeImage from "../../assets/img/bg-home.jpeg";
 
 import AtencaoPrimariaIcon from "../../assets/icons/atprimaria.png";
 import AtencaoEspecializadaIcon from "../../assets/icons/atespecializada.png";
@@ -52,6 +53,24 @@ import AboutSection from '../../components/Sections/AboutSection/AboutSection';
 
 function Home() {
     const navigate = useNavigate();
+
+    const [currentPhrase, setCurrentPhrase] = useState(0);
+    const phrases = [
+        "a qualidade de vida",
+        "a eficiência pública",
+        "a transformação digital",
+        "o desenvolvimento sustentável",
+        "o progresso econômico"
+    ];
+
+    // Efeito para trocar frases
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentPhrase((prev) => (prev + 1) % phrases.length);
+        }, 3000); // Muda a cada 3 segundos
+
+        return () => clearInterval(interval);
+    }, []);
 
     const goToServicos = () => {
         navigate('/servicos');
@@ -142,62 +161,34 @@ function Home() {
     return (
         <>
             {/* Seção Principal com Gradiente */}
-            <div className="home-container">
-                {/* Círculos animados de fundo */}
+            <div
+                className="home-container"
+                style={{
+                    background: `url(${backgroundHomeImage}) center/cover no-repeat`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center 15% !important',
+                    backgroundRepeat: 'no-repeat'
+                }}>
                 <div className="floating-circle circle-1"></div>
                 <div className="floating-circle circle-2"></div>
                 <div className="floating-circle circle-3"></div>
                 <div className="floating-circle circle-4"></div>
                 <div className="floating-circle circle-5"></div>
 
-                <div className="container-fluid">
-                    <div className="row align-items-center">
-                        {/* Texto à esquerda */}
-                        <div className="col-lg-7">
+                <div className="container-fluid" 
+                    style={{
+                        background: 'linear-gradient(to top, rgba(133, 197, 240, 0.55), rgba(194, 212, 238, 0.56))',
+                        borderRadius: '0 0 60px 60px',
+                        padding: '10px'
+                    }}
+                >
+                    <div className="row align-items-left">
+                        <div className="col-lg-6">
                             <motion.div
-                                initial={{ opacity: 0, x: -50 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8 }}
-                                className="home-content"
-                            >
-                                <motion.h1
-                                    className="display-4 fw-bold mb-4"
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.2, duration: 0.8 }}
-                                    style={{ color: '#263238' }}
-                                >
-                                    Inovação & Inteligência Artificial<br></br>
-                                    <span className="text-primary-health"> à Serviço da Gestão em Saúde</span>
-                                </motion.h1>
-
-                                <motion.p
-                                    className="lead text-muted mb-4"
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.4, duration: 0.8 }}
-                                >
-                                    Transformando dados em decisões que fortalecem o SUS
-                                </motion.p>
-
-                                <motion.div
-                                    className="home-buttons"
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.6, duration: 0.8 }}
-                                >
-                                    <button className="btn btn-primary-health btn-lg me-3">
-                                        Solicite uma Demonstração
-                                        <ArrowRight className="ms-2" size={20} />
-                                    </button>
-                                </motion.div>
-                            </motion.div>
-
-                            <motion.div
-                                className="company-highlights-compact"
-                                initial={{ opacity: 0, y: 20 }}
+                                className="company-highlights-compact from-bottom"
+                                initial={{ opacity: 0, y: 50 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.8, duration: 0.6 }}
+                                transition={{ duration: 0.8, delay: 0.3 }}
                             >
                                 <div className="highlights-container-compact">
                                     <div className="highlights-grid-compact">
@@ -240,44 +231,29 @@ function Home() {
                             </motion.div>
                         </div>
 
-                        {/* Imagem com novo SVG atrás - à direita */}
-                        <div className="col-lg-5">
-                            <motion.div
-                                initial={{ opacity: 0, x: 50 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8, delay: 0.3 }}
-                                className="home-image-composition"
-                            >
-                                {/* NOVO SVG atrás */}
-                                {/* <div className="svg-background">
-                                    <svg
-                                        viewBox="0 0 1200 1200"
-                                        width="200"
-                                        height="200"
-                                        className="abstract-svg"
-                                    >
-                                        <g transform="translate(416.7151027264783 279.50028151641493)">
-                                            <path
-                                                d="M166.6 -152.8C214.5 -118.8 250.7 -59.4 244.2 -6.5C237.8 46.4 188.5 92.9 140.7 141.4C92.9 189.9 46.4 240.4 -4.7 245.1C-55.9 249.9 -111.7 208.7 -136.7 160.2C-161.7 111.7 -155.9 55.9 -163.3 -7.4C-170.7 -70.7 -191.4 -141.4 -166.4 -175.4C-141.4 -209.4 -70.7 -206.7 -5.7 -201.1C59.4 -195.4 118.8 -186.8 166.6 -152.8"
-                                                fill="#4286c7"
-                                            />
-                                        </g>
-                                    </svg>
-                                </div> */}
+                        <div className="col-lg-6 mt-4">
+                            <span style={{ color: '#0e3458ff', fontSize: '38px', marginLeft: '90px', fontWeight: 600 }}>
+                                Impulsione
+                            </span>
 
-                                {/* Imagem na frente */}
-                                {/* <div className="image-foreground">
-                                    <motion.img
-                                        src={healtImageHome}
-                                        alt="Inovação em saúde e tecnologia"
-                                        className="foreground-image"
-                                        initial={{ scale: 0.9, opacity: 0 }}
-                                        animate={{ scale: 1.25, opacity: 1 }}
-                                        transition={{ duration: 0.8, delay: 0.5 }}
-                                        whileHover={{ scale: 1.15 }}
-                                    />
-                                </div> */}
-                            </motion.div>
+                            <div className="animated-phrase">
+                                <AnimatePresence mode="wait">
+                                    <motion.span
+                                        key={currentPhrase}
+                                        style={{ fontSize: '38px', color: '#4286c7', marginLeft: '90px', fontWeight: 800 }}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -20 }}
+                                        transition={{ duration: 0.5 }}
+                                    >
+                                        {phrases[currentPhrase]}
+                                    </motion.span>
+                                </AnimatePresence>
+                            </div>
+
+                            <span style={{ color: '#0e3458ff', fontSize: '38px', marginLeft: '90px', fontWeight: 600 }}>
+                                com uma gestão mais eficiente e inteligente
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -299,7 +275,7 @@ function Home() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
                             >
-                                Tecnologia que Transforma a Gestão Pública
+                                Transforme a Gestão Pública com o poder da IA
                             </motion.h2>
                             <motion.p
                                 className="section-subtitle"
@@ -307,7 +283,7 @@ function Home() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
                             >
-                                Soluções inovadoras desenvolvidas especificamente para os desafios do setor público
+                                A Inteligência Artificial é o coração das nossas soluções, impulsionando gestores na análise, no planejamento e nas decisões estratégicas que conduzem a políticas públicas mais eficientes, conectadas e baseadas em evidências. Fortalecemos, assim, a gestão em todos os níveis da saúde pública.
                             </motion.p>
                         </div>
                     </div>
@@ -328,8 +304,7 @@ function Home() {
                                 </div>
                                 <h4 className="card-title">Cloud Nativa</h4>
                                 <p className="card-description">
-                                    Conte com um sistema de gestão 100% em nuvem e referência em qualidade.
-                                    Alta performance, estabilidade e segurança que somente um sistema nativo web oferece.
+                                    Conte com um sistema de gestão 100% em nuvem, projetado para oferecer desempenho superior, disponibilidade contínua e máxima segurança. Sua arquitetura nativa web garante escalabilidade, confiabilidade e alta performance para operações de qualquer porte — uma solução referência em qualidade, pronta para acompanhar o ritmo da sua gestão.
                                 </p>
                             </motion.div>
                         </div>
@@ -443,7 +418,7 @@ function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
             >
-               <AboutSection />
+                <AboutSection />
 
                 {/* Conteúdo Principal com Tecnologia e Foco */}
                 <div className="col-12">
@@ -716,121 +691,6 @@ function Home() {
                     </div>
                 </div>
             </motion.section>
-
-            {/* Seção Tecnologia que Transforma a Gestão em Resultados */}
-            {/* <motion.section
-                className="technology-section"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-            >
-                <div className="container-fluid p-0">
-                    <div className="technology-header">
-                        <h2 className="technology-title">
-                            Tecnologia que Transforma a Gestão em Resultados
-                        </h2>
-                    </div>
-
-                    <div className="row align-items-stretch g-0">
-                        <div className="col-lg-4">
-                            <motion.div
-                                className="technology-image-container"
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.8, delay: 1.2 }}
-                            >
-                                <img
-                                    src={solutionsImg}
-                                    alt="Tecnologia em Saúde Pública"
-                                    className="technology-image"
-                                />
-                                <div className="image-overlay">
-                                    <h4>Soluções Inovadoras</h4>
-                                    <p>Para a gestão pública em saúde</p>
-                                </div>
-                            </motion.div>
-                        </div>
-
-                        <div className="col-lg-8">
-                            <div className="technology-content h-100">
-                                <div className="features-grid-cards h-100">
-                                    {[
-                                        {
-                                            text: "Diferenciais Tecnológicos",
-                                            icon: <Cpu size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Arquitetura Modular e Escalável",
-                                            icon: <Layers size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Segurança Total Conforme LGPD",
-                                            icon: <ShieldCheck size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Disponibilidade 24/7",
-                                            icon: <Clock size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Interface Moderna e Intuitiva",
-                                            icon: <Smartphone size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Base de Dados Integrada aos Sistemas Nacionais",
-                                            icon: <Database size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Resultados para o SUS",
-                                            icon: <Target size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Gestão Pública Orientada por Dados",
-                                            icon: <BarChart3 size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Otimização de Recursos Financeiros",
-                                            icon: <DollarSign size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Melhoria da Experiência do Paciente",
-                                            icon: <Heart size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Integração Real entre os Níveis de Atenção",
-                                            icon: <GitMerge size={34} className="feature-icon" />
-                                        },
-                                        {
-                                            text: "Aumento da Transparência e da Eficiência",
-                                            icon: <TrendingUp size={34} className="feature-icon" />
-                                        }
-                                    ].map((item, index) => (
-                                        <motion.div
-                                            key={index}
-                                            className="feature-card"
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.5, delay: index * 0.1 + 1 }}
-                                            whileHover={{ y: -5, scale: 1.02 }}
-                                        >
-                                            <div className="feature-card-content">
-                                                <div className="feature-icon-container">
-                                                    {item.icon}
-                                                </div>
-                                                <div className="feature-text-container">
-                                                    <span className="feature-text" style={{ fontSize: '18px', color: '#263238' }}>
-                                                        {item.text}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </motion.section> */}
-
         </>
     );
 }
